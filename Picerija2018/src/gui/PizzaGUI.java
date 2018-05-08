@@ -15,6 +15,7 @@ public class PizzaGUI extends JFrame {
 		setResizable(false);
 		setBounds(100, 100, 533, 367);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		getContentPane().setLayout(null);
 	}
 
 }

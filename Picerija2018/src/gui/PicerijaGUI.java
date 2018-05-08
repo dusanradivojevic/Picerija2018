@@ -145,9 +145,11 @@ public class PicerijaGUI extends JFrame{
 				public void actionPerformed(ActionEvent arg0) {
 					//pozivam metodu kojoj saljem string
 					//comboBoxPizza.getSelectedItem().toString()
-					//ona mi vraca 
+					//ona mi vraca string sa classpath za icon
+					//vraca mi i objekat klase pizza
 					
 					GUIKontroler.prikaziPizzaGUI();
+					dispose();
 				}
 			});
 			btnOdaberiPizzu.setBounds(190, 88, 131, 25);
@@ -157,6 +159,17 @@ public class PicerijaGUI extends JFrame{
 	private JButton getBtnOdaberiPice() {
 		if (btnOdaberiPice == null) {
 			btnOdaberiPice = new JButton("Odaberi pice");
+			btnOdaberiPice.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					//pozivam metodu kojoj saljem string
+					//comboBoxPizza.getSelectedItem().toString()
+					//ona mi vraca string sa classpath za icon
+					//vraca mi i objekat klase pice
+					
+					GUIKontroler.prikaziPiceGUI();
+					dispose();
+				}
+			});
 			btnOdaberiPice.setBounds(190, 204, 131, 25);
 		}
 		return btnOdaberiPice;

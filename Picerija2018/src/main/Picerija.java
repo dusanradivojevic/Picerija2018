@@ -5,22 +5,23 @@ import java.util.LinkedList;
 
 import main.interfejs.PicerijaInterfejs;
 import main.porudzbina.StavkaPorudzbine;
+import main.sistemskeOperacije.SODodajPorudzbinuUListu;
+import main.sistemskeOperacije.SOSerijalizuj;
 
 public class Picerija implements PicerijaInterfejs{
 	
-	LinkedList<StavkaPorudzbine> porudzbina;	
+	private LinkedList<StavkaPorudzbine> porudzbina;	
 
 	@Override
-	public void serijalizuj(LinkedList<StavkaPorudzbine> porudzbina, GregorianCalendar datum) {
-		// TODO Auto-generated method stub
+	public void serijalizuj(LinkedList<StavkaPorudzbine> porudzbina, String putanjaDoFajla) throws Exception {
 		
+		SOSerijalizuj.izvrsi(porudzbina, new GregorianCalendar(), putanjaDoFajla);
 	}
 
 	@Override
-	public void dodajPorudzbinu(String naziv, double cena) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void dodajPorudzbinuUListu(String naziv, double cena) throws Exception {
 
+		SODodajPorudzbinuUListu.izvrsi(porudzbina, naziv, cena);		
+	}
 	
 }

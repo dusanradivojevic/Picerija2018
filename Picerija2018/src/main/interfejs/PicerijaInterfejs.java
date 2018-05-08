@@ -1,13 +1,12 @@
 package main.interfejs;
 
-import java.util.GregorianCalendar;
 import java.util.LinkedList;
 
 import main.porudzbina.StavkaPorudzbine;
 
 public interface PicerijaInterfejs {
 	
-	public void serijalizuj(LinkedList<StavkaPorudzbine> porudzbina, GregorianCalendar datum);
+	public void serijalizuj(LinkedList<StavkaPorudzbine> porudzbina, String putanjaDoFajla) throws Exception;
 	
-	public void dodajPorudzbinu(String naziv, double cena);
+	public void dodajPorudzbinuUListu(String naziv, double cena) throws Exception;
 }

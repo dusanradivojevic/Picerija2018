@@ -42,6 +42,8 @@ public class StavkaPorudzbine {
 	
 	/**
 	 * Metoda koja vraca cenu stavke.
+	 * 
+	 * @return cena Cena stavke.
 	 */
 	public double getCena() {
 		return cena;
@@ -49,6 +51,8 @@ public class StavkaPorudzbine {
 	
 	/**
 	 * Metoda koja ispisuje osnovne podatke o stavki odnosno naziv i cenu.
+	 * 
+	 * @return String Formatiran tekst koji sadrzi naziv i cenu stavke u dinarima.
 	 */
 	@Override
 	public String toString() {

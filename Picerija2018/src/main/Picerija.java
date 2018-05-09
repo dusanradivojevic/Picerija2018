@@ -12,6 +12,9 @@ public class Picerija implements PicerijaInterfejs {
 
 	// private LinkedList<StavkaPorudzbine> porudzbina;
 
+	/**
+	 * Metoda koja podatke o porudzbini upisuje u data fajl.
+	 */
 	@Override
 	public void serijalizujUBin(LinkedList<StavkaPorudzbine> porudzbina, String putanjaDoFajla) throws Exception {
 
@@ -19,6 +22,9 @@ public class Picerija implements PicerijaInterfejs {
 	}
 	
 	
+	/**
+	 * Metoda koja podatke o porudzbini upisuje u tekstualni fajl.
+	 */
 	@Override
 	public void serijalizujUTxt(LinkedList<StavkaPorudzbine> porudzbina, String putanjaDoFajla) throws Exception {
 		
@@ -27,6 +33,9 @@ public class Picerija implements PicerijaInterfejs {
 	}
 
 
+	/**
+	 * Metoda koja pojedinacne stavke dodaje u listu porudzbina.
+	 */
 	@Override
 	public void dodajPorudzbinuUListu(LinkedList<StavkaPorudzbine> porudzbina, String naziv, double cena)
 			throws Exception {

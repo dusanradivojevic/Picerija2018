@@ -1,13 +1,12 @@
 package main.porudzbina;
 
 import java.io.Serializable;
-import java.util.GregorianCalendar;
 import java.util.LinkedList;
 
 public class StavkaSerializable implements Serializable {
 	
 	private LinkedList<StavkaPorudzbine> porudzbina;
-	private GregorianCalendar datum;
+	private String datum;
 	
 	public LinkedList<StavkaPorudzbine> getPorudzbina() {
 		return porudzbina;
@@ -17,11 +16,11 @@ public class StavkaSerializable implements Serializable {
 		this.porudzbina = porudzbina;
 	}
 	
-	public GregorianCalendar getDatum() {
+	public String getDatum() {
 		return datum;
 	}
 	
-	public void setDatum(GregorianCalendar datum) {
+	public void setDatum(String datum) {
 		this.datum = datum;
 	}
 	

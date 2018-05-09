@@ -1,22 +1,31 @@
 package main;
 
-import java.util.GregorianCalendar;
 import java.util.LinkedList;
 
 import main.interfejs.PicerijaInterfejs;
 import main.porudzbina.StavkaPorudzbine;
 import main.sistemskeOperacije.SODodajPorudzbinuUListu;
-import main.sistemskeOperacije.SOSerijalizuj;
+import main.sistemskeOperacije.SOUpisiUBin;
+import main.sistemskeOperacije.SOUpisiUTxt;
 
 public class Picerija implements PicerijaInterfejs {
 
 	// private LinkedList<StavkaPorudzbine> porudzbina;
 
 	@Override
-	public void serijalizuj(LinkedList<StavkaPorudzbine> porudzbina, String putanjaDoFajla) throws Exception {
+	public void serijalizujUBin(LinkedList<StavkaPorudzbine> porudzbina, String putanjaDoFajla) throws Exception {
 
-		SOSerijalizuj.izvrsi(porudzbina, new GregorianCalendar(), putanjaDoFajla);
+		SOUpisiUBin.izvrsi(porudzbina, putanjaDoFajla);
 	}
+	
+	
+	@Override
+	public void serijalizujUTxt(LinkedList<StavkaPorudzbine> porudzbina, String putanjaDoFajla) throws Exception {
+		
+		SOUpisiUTxt.izvrsi(porudzbina, putanjaDoFajla);
+		
+	}
+
 
 	@Override
 	public void dodajPorudzbinuUListu(LinkedList<StavkaPorudzbine> porudzbina, String naziv, double cena)

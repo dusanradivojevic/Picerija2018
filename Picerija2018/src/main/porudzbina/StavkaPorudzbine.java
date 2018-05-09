@@ -40,8 +40,19 @@ public class StavkaPorudzbine {
 		this.cena = cena;
 	}
 	
+	/**
+	 * Metoda koja vraca cenu stavke.
+	 */
 	public double getCena() {
 		return cena;
+	}
+	
+	/**
+	 * Metoda koja ispisuje osnovne podatke o stavki odnosno naziv i cenu.
+	 */
+	@Override
+	public String toString() {
+		return naziv + "\t" + cena + " din \n";
 	}
 	
 }

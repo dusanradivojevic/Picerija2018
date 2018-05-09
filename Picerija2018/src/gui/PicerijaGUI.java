@@ -27,6 +27,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JScrollPane;
 
 public class PicerijaGUI extends JFrame {
 
@@ -51,6 +52,7 @@ public class PicerijaGUI extends JFrame {
 	private JMenuBar menuBar;
 	private JMenu mnHelp;
 	private JMenuItem mntmAbout;
+	private JScrollPane scrollPane;
 
 	/**
 	 * Create the frame.
@@ -99,10 +101,10 @@ public class PicerijaGUI extends JFrame {
 			panel_1.setLayout(null);
 			panel_1.add(getLblPorudzbina());
 			panel_1.add(getBtnPoruci());
-			panel_1.add(getTextAreaPorudzbina());
 			panel_1.add(getLblTotal());
 			panel_1.add(getTextFieldTotal());
 			panel_1.add(getLblRsd());
+			panel_1.add(getScrollPane());
 		}
 		return panel_1;
 	}
@@ -249,7 +251,6 @@ public class PicerijaGUI extends JFrame {
 	private JTextArea getTextAreaPorudzbina() {
 		if (textAreaPorudzbina == null) {
 			textAreaPorudzbina = new JTextArea();
-			textAreaPorudzbina.setBounds(47, 70, 361, 243);
 		}
 		return textAreaPorudzbina;
 	}
@@ -329,5 +330,13 @@ public class PicerijaGUI extends JFrame {
 			});
 		}
 		return mntmAbout;
+	}
+	private JScrollPane getScrollPane() {
+		if (scrollPane == null) {
+			scrollPane = new JScrollPane();
+			scrollPane.setBounds(51, 74, 355, 231);
+			scrollPane.setViewportView(getTextAreaPorudzbina());
+		}
+		return scrollPane;
 	}
 }

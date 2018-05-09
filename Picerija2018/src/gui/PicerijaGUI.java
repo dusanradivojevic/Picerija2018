@@ -23,7 +23,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 
-public class PicerijaGUI extends JFrame{
+public class PicerijaGUI extends JFrame {
 
 	private JPanel contentPane;
 	private JPanel panel;
@@ -44,8 +44,6 @@ public class PicerijaGUI extends JFrame{
 	private JTextField textFieldTotal;
 	private JLabel lblRsd;
 
-	
-
 	/**
 	 * Create the frame.
 	 */
@@ -61,7 +59,7 @@ public class PicerijaGUI extends JFrame{
 		setBounds(100, 100, 816, 512);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setLocationRelativeTo(null);
-		
+
 		getContentPane().add(getPanel(), BorderLayout.WEST);
 		getContentPane().add(getPanel_1(), BorderLayout.EAST);
 	}
@@ -83,6 +81,7 @@ public class PicerijaGUI extends JFrame{
 		}
 		return panel;
 	}
+
 	private JPanel getPanel_1() {
 		if (panel_1 == null) {
 			panel_1 = new JPanel();
@@ -97,6 +96,7 @@ public class PicerijaGUI extends JFrame{
 		}
 		return panel_1;
 	}
+
 	private JLabel getLblPizza() {
 		if (lblPizza == null) {
 			lblPizza = new JLabel("Pizza");
@@ -104,6 +104,7 @@ public class PicerijaGUI extends JFrame{
 		}
 		return lblPizza;
 	}
+
 	private JLabel getLblPice() {
 		if (lblPice == null) {
 			lblPice = new JLabel("Pice");
@@ -111,6 +112,7 @@ public class PicerijaGUI extends JFrame{
 		}
 		return lblPice;
 	}
+
 	private JLabel getLblDesert() {
 		if (lblDesert == null) {
 			lblDesert = new JLabel("Desert");
@@ -118,40 +120,46 @@ public class PicerijaGUI extends JFrame{
 		}
 		return lblDesert;
 	}
+
 	private JComboBox getComboBoxPizza() {
 		if (comboBoxPizza == null) {
 			comboBoxPizza = new JComboBox();
-			comboBoxPizza.setModel(new DefaultComboBoxModel(new String[] {"Margarita", "Vegetariano", "Vesuvio", "Capricciosa", "Serbiana"}));
+			comboBoxPizza.setModel(new DefaultComboBoxModel(
+					new String[] { "Margarita", "Vegetariano", "Vesuvio", "Capricciosa", "Serbiana" }));
 			comboBoxPizza.setBounds(31, 89, 111, 22);
 		}
 		return comboBoxPizza;
 	}
+
 	private JComboBox getComboBoxPice() {
 		if (comboBoxPice == null) {
 			comboBoxPice = new JComboBox();
-			comboBoxPice.setModel(new DefaultComboBoxModel(new String[] {"\u0160ljiva", "Kru\u0161ka", "Dunja"}));
+			comboBoxPice.setModel(new DefaultComboBoxModel(new String[] { "\u0160ljiva", "Kru\u0161ka", "Dunja" }));
 			comboBoxPice.setBounds(31, 205, 111, 22);
 		}
 		return comboBoxPice;
 	}
+
 	private JComboBox getComboBox_1() {
 		if (comboBoxDesert == null) {
 			comboBoxDesert = new JComboBox();
-			comboBoxDesert.setModel(new DefaultComboBoxModel(new String[] {"\u010Cokoladni mus", "Tiramisu", "Orasnice"}));
+			comboBoxDesert
+					.setModel(new DefaultComboBoxModel(new String[] { "\u010Cokoladni mus", "Tiramisu", "Orasnice" }));
 			comboBoxDesert.setBounds(31, 334, 111, 22);
 		}
 		return comboBoxDesert;
 	}
+
 	private JButton getBtnOdaberiPizzu() {
 		if (btnOdaberiPizzu == null) {
 			btnOdaberiPizzu = new JButton("Odaberi pizzu");
 			btnOdaberiPizzu.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					//pozivam metodu kojoj saljem string
-					//comboBoxPizza.getSelectedItem().toString()
-					//ona mi vraca string sa classpath za icon
-					//vraca mi i objekat klase pizza
-					
+					// pozivam metodu kojoj saljem string
+					// comboBoxPizza.getSelectedItem().toString()
+					// ona mi vraca string sa classpath za icon
+					// vraca mi i objekat klase pizza
+
 					GUIKontroler.prikaziPizzaGUI();
 				}
 			});
@@ -159,16 +167,17 @@ public class PicerijaGUI extends JFrame{
 		}
 		return btnOdaberiPizzu;
 	}
+
 	private JButton getBtnOdaberiPice() {
 		if (btnOdaberiPice == null) {
 			btnOdaberiPice = new JButton("Odaberi pice");
 			btnOdaberiPice.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					//pozivam metodu kojoj saljem string
-					//comboBoxPizza.getSelectedItem().toString()
-					//ona mi vraca string sa classpath za icon
-					//vraca mi i objekat klase pice
-					
+					// pozivam metodu kojoj saljem string
+					// comboBoxPizza.getSelectedItem().toString()
+					// ona mi vraca string sa classpath za icon
+					// vraca mi i objekat klase pice
+
 					GUIKontroler.prikaziPiceGUI();
 				}
 			});
@@ -176,6 +185,7 @@ public class PicerijaGUI extends JFrame{
 		}
 		return btnOdaberiPice;
 	}
+
 	private JButton getBtnOdaberiDesert() {
 		if (btnOdaberiDesert == null) {
 			btnOdaberiDesert = new JButton("Odaberi desert");
@@ -183,6 +193,7 @@ public class PicerijaGUI extends JFrame{
 		}
 		return btnOdaberiDesert;
 	}
+
 	private JLabel getLblPorudzbina() {
 		if (lblPorudzbina == null) {
 			lblPorudzbina = new JLabel("Porudzbina");
@@ -191,14 +202,27 @@ public class PicerijaGUI extends JFrame{
 		}
 		return lblPorudzbina;
 	}
+
 	private JButton getBtnPoruci() {
 		if (btnPoruci == null) {
 			btnPoruci = new JButton("Poruci");
+			btnPoruci.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					int opcija = JOptionPane.showConfirmDialog(contentPane,
+							"Da li zelite da porucite jos nesto?", "Kraj porudzbine", JOptionPane.YES_NO_OPTION);
+
+					if (opcija == JOptionPane.NO_OPTION) {
+						GUIKontroler.zavrsiPorudzbinu();
+						System.exit(0);
+					}
+				}
+			});
 			btnPoruci.setFont(new Font("Tahoma", Font.PLAIN, 18));
 			btnPoruci.setBounds(125, 400, 164, 38);
 		}
 		return btnPoruci;
 	}
+
 	private JTextArea getTextAreaPorudzbina() {
 		if (textAreaPorudzbina == null) {
 			textAreaPorudzbina = new JTextArea();
@@ -206,6 +230,7 @@ public class PicerijaGUI extends JFrame{
 		}
 		return textAreaPorudzbina;
 	}
+
 	private JLabel getLblTotal() {
 		if (lblTotal == null) {
 			lblTotal = new JLabel("Total:");
@@ -214,6 +239,7 @@ public class PicerijaGUI extends JFrame{
 		}
 		return lblTotal;
 	}
+
 	private JTextField getTextFieldTotal() {
 		if (textFieldTotal == null) {
 			textFieldTotal = new JTextField();
@@ -224,6 +250,7 @@ public class PicerijaGUI extends JFrame{
 		}
 		return textFieldTotal;
 	}
+
 	private JLabel getLblRsd() {
 		if (lblRsd == null) {
 			lblRsd = new JLabel("RSD");
@@ -232,20 +259,20 @@ public class PicerijaGUI extends JFrame{
 		}
 		return lblRsd;
 	}
-	
+
 	private void ugasiAplikaciju() {
-		int opcija = JOptionPane.showConfirmDialog(contentPane, "Da li ZAISTA zelite da izadjete iz apliacije",
+		int opcija = JOptionPane.showConfirmDialog(contentPane, "Da li zaista zelite da izadjete iz aplikacije",
 				"Izlazak", JOptionPane.YES_NO_OPTION);
 
 		if (opcija == JOptionPane.YES_OPTION)
 			System.exit(0);
 	}
-	
+
 	public void ispisiPorudzbinu() {
 		textAreaPorudzbina.setText(GUIKontroler.tekstPorudzbine());
 		ispisiTotal();
 	}
-	
+
 	public void ispisiTotal() {
 		textFieldTotal.setText(GUIKontroler.getTotal() + "\tRSD");
 	}

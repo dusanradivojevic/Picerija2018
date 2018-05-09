@@ -21,8 +21,15 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
+import java.awt.Component;
+import javax.swing.SwingConstants;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.JScrollPane;
 
-public class PicerijaGUI extends JFrame{
+public class PicerijaGUI extends JFrame {
 
 	private JPanel contentPane;
 	private JPanel panel;
@@ -38,28 +45,35 @@ public class PicerijaGUI extends JFrame{
 	private JButton btnOdaberiDesert;
 	private JLabel lblPorudzbina;
 	private JButton btnPoruci;
-	private JTextArea textArea;
+	private JTextArea textAreaPorudzbina;
 	private JLabel lblTotal;
-	private JTextField textField;
+	private JTextField textFieldTotal;
 	private JLabel lblRsd;
-
-	
+	private JMenuBar menuBar;
+	private JMenu mnHelp;
+	private JMenuItem mntmAbout;
+	private JScrollPane scrollPane;
 
 	/**
 	 * Create the frame.
 	 */
 	public PicerijaGUI() {
+		setTitle("Picerija");
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent arg0) {
 				ugasiAplikaciju();
 			}
 		});
+		setIconImage(Toolkit.getDefaultToolkit().getImage(PicerijaGUI.class.getResource("/icons/picerija.jpg")));
 		setResizable(false);
 		setBounds(100, 100, 816, 512);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		setLocationRelativeTo(null);
+
 		getContentPane().add(getPanel(), BorderLayout.WEST);
 		getContentPane().add(getPanel_1(), BorderLayout.EAST);
+		setJMenuBar(getMenuBar_1());
 	}
 
 	private JPanel getPanel() {
@@ -79,6 +93,7 @@ public class PicerijaGUI extends JFrame{
 		}
 		return panel;
 	}
+
 	private JPanel getPanel_1() {
 		if (panel_1 == null) {
 			panel_1 = new JPanel();
@@ -86,13 +101,14 @@ public class PicerijaGUI extends JFrame{
 			panel_1.setLayout(null);
 			panel_1.add(getLblPorudzbina());
 			panel_1.add(getBtnPoruci());
-			panel_1.add(getTextArea());
 			panel_1.add(getLblTotal());
-			panel_1.add(getTextField());
+			panel_1.add(getTextFieldTotal());
 			panel_1.add(getLblRsd());
+			panel_1.add(getScrollPane());
 		}
 		return panel_1;
 	}
+
 	private JLabel getLblPizza() {
 		if (lblPizza == null) {
 			lblPizza = new JLabel("Pizza");
@@ -100,13 +116,15 @@ public class PicerijaGUI extends JFrame{
 		}
 		return lblPizza;
 	}
+
 	private JLabel getLblPice() {
 		if (lblPice == null) {
-			lblPice = new JLabel("Pice");
+			lblPice = new JLabel("Pi\u0107e");
 			lblPice.setBounds(31, 163, 56, 16);
 		}
 		return lblPice;
 	}
+
 	private JLabel getLblDesert() {
 		if (lblDesert == null) {
 			lblDesert = new JLabel("Desert");
@@ -114,96 +132,129 @@ public class PicerijaGUI extends JFrame{
 		}
 		return lblDesert;
 	}
+
 	private JComboBox getComboBoxPizza() {
 		if (comboBoxPizza == null) {
 			comboBoxPizza = new JComboBox();
-			comboBoxPizza.setModel(new DefaultComboBoxModel(new String[] {"Margarita", "Vegetariano", "Vesuvio", "Capricciosa", "Serbiana"}));
+			comboBoxPizza.setModel(new DefaultComboBoxModel(
+					new String[] { "Margarita", "Vegetariano", "Vesuvio", "Capricciosa", "Serbiana" }));
 			comboBoxPizza.setBounds(31, 89, 111, 22);
 		}
 		return comboBoxPizza;
 	}
+
 	private JComboBox getComboBoxPice() {
 		if (comboBoxPice == null) {
 			comboBoxPice = new JComboBox();
-			comboBoxPice.setModel(new DefaultComboBoxModel(new String[] {"\u0160ljiva", "Kru\u0161ka", "Dunja"}));
+			comboBoxPice.setModel(new DefaultComboBoxModel(new String[] { "\u0160ljiva", "Kru\u0161ka", "Dunja" }));
 			comboBoxPice.setBounds(31, 205, 111, 22);
 		}
 		return comboBoxPice;
 	}
+
 	private JComboBox getComboBox_1() {
 		if (comboBoxDesert == null) {
 			comboBoxDesert = new JComboBox();
-			comboBoxDesert.setModel(new DefaultComboBoxModel(new String[] {"\u010Cokoladni mus", "Tiramisu", "Orasnice"}));
+			comboBoxDesert
+					.setModel(new DefaultComboBoxModel(new String[] { "\u010Cokoladni mus", "Tiramisu", "Orasnice" }));
 			comboBoxDesert.setBounds(31, 334, 111, 22);
 		}
 		return comboBoxDesert;
 	}
+
 	private JButton getBtnOdaberiPizzu() {
 		if (btnOdaberiPizzu == null) {
 			btnOdaberiPizzu = new JButton("Odaberi pizzu");
 			btnOdaberiPizzu.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					//pozivam metodu kojoj saljem string
-					//comboBoxPizza.getSelectedItem().toString()
-					//ona mi vraca string sa classpath za icon
-					//vraca mi i objekat klase pizza
-					
+					// pozivam metodu kojoj saljem string
+					// comboBoxPizza.getSelectedItem().toString()
+					// ona mi vraca string sa classpath za icon
+					// vraca mi i objekat klase pizza
+
 					GUIKontroler.prikaziPizzaGUI();
-					dispose();
 				}
 			});
 			btnOdaberiPizzu.setBounds(190, 88, 131, 25);
 		}
 		return btnOdaberiPizzu;
 	}
+
 	private JButton getBtnOdaberiPice() {
 		if (btnOdaberiPice == null) {
-			btnOdaberiPice = new JButton("Odaberi pice");
+			btnOdaberiPice = new JButton("Odaberi pi\u0107e");
 			btnOdaberiPice.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					//pozivam metodu kojoj saljem string
-					//comboBoxPizza.getSelectedItem().toString()
-					//ona mi vraca string sa classpath za icon
-					//vraca mi i objekat klase pice
-					
+					// pozivam metodu kojoj saljem string
+					// comboBoxPizza.getSelectedItem().toString()
+					// ona mi vraca string sa classpath za icon
+					// vraca mi i objekat klase pice
+
 					GUIKontroler.prikaziPiceGUI();
-					dispose();
 				}
 			});
 			btnOdaberiPice.setBounds(190, 204, 131, 25);
 		}
 		return btnOdaberiPice;
 	}
+
 	private JButton getBtnOdaberiDesert() {
 		if (btnOdaberiDesert == null) {
 			btnOdaberiDesert = new JButton("Odaberi desert");
+			btnOdaberiDesert.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					// pozivam metodu kojoj saljem string
+					// comboBoxPizza.getSelectedItem().toString()
+					// ona mi vraca string sa classpath za icon
+					// vraca mi i objekat klase pice
+
+					GUIKontroler.prikaziDesertGUI();
+				}
+			});
 			btnOdaberiDesert.setBounds(190, 333, 131, 25);
 		}
 		return btnOdaberiDesert;
 	}
+
 	private JLabel getLblPorudzbina() {
 		if (lblPorudzbina == null) {
-			lblPorudzbina = new JLabel("Porudzbina");
+			lblPorudzbina = new JLabel("Porud\u017Ebina");
 			lblPorudzbina.setFont(new Font("Tahoma", Font.PLAIN, 24));
 			lblPorudzbina.setBounds(154, 13, 147, 44);
 		}
 		return lblPorudzbina;
 	}
+
 	private JButton getBtnPoruci() {
 		if (btnPoruci == null) {
-			btnPoruci = new JButton("Poruci");
+			btnPoruci = new JButton("Poru\u010Di");
+			btnPoruci.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					int opcija = JOptionPane.showConfirmDialog(contentPane, "Da li zelite da porucite jos nesto?",
+							"Kraj porudzbine", JOptionPane.YES_NO_OPTION);
+
+					if (opcija == JOptionPane.NO_OPTION) {
+						GUIKontroler.zavrsiPorudzbinu();
+						JOptionPane.showMessageDialog(contentPane,
+								"Vasa porudzbina je evidentirana. Hvala na strpljenju!", "Uspesna porudzbina",
+								JOptionPane.INFORMATION_MESSAGE);
+						System.exit(0);
+					}
+				}
+			});
 			btnPoruci.setFont(new Font("Tahoma", Font.PLAIN, 18));
 			btnPoruci.setBounds(125, 400, 164, 38);
 		}
 		return btnPoruci;
 	}
-	private JTextArea getTextArea() {
-		if (textArea == null) {
-			textArea = new JTextArea();
-			textArea.setBounds(47, 70, 361, 243);
+
+	private JTextArea getTextAreaPorudzbina() {
+		if (textAreaPorudzbina == null) {
+			textAreaPorudzbina = new JTextArea();
 		}
-		return textArea;
+		return textAreaPorudzbina;
 	}
+
 	private JLabel getLblTotal() {
 		if (lblTotal == null) {
 			lblTotal = new JLabel("Total:");
@@ -212,15 +263,19 @@ public class PicerijaGUI extends JFrame{
 		}
 		return lblTotal;
 	}
-	private JTextField getTextField() {
-		if (textField == null) {
-			textField = new JTextField();
-			textField.setFont(new Font("Tahoma", Font.PLAIN, 17));
-			textField.setBounds(141, 341, 178, 28);
-			textField.setColumns(10);
+
+	private JTextField getTextFieldTotal() {
+		if (textFieldTotal == null) {
+			textFieldTotal = new JTextField();
+			textFieldTotal.setHorizontalAlignment(SwingConstants.RIGHT);
+			textFieldTotal.setEditable(false);
+			textFieldTotal.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			textFieldTotal.setBounds(141, 341, 178, 28);
+			textFieldTotal.setColumns(10);
 		}
-		return textField;
+		return textFieldTotal;
 	}
+
 	private JLabel getLblRsd() {
 		if (lblRsd == null) {
 			lblRsd = new JLabel("RSD");
@@ -229,12 +284,59 @@ public class PicerijaGUI extends JFrame{
 		}
 		return lblRsd;
 	}
-	
+
 	private void ugasiAplikaciju() {
-		int opcija = JOptionPane.showConfirmDialog(contentPane, "Da li ZAISTA zelite da izadjete iz apliacije",
+		int opcija = JOptionPane.showConfirmDialog(contentPane, "Da li zaista zelite da izadjete iz aplikacije",
 				"Izlazak", JOptionPane.YES_NO_OPTION);
 
 		if (opcija == JOptionPane.YES_OPTION)
 			System.exit(0);
+	}
+
+	public void ispisiPorudzbinu() {
+		textAreaPorudzbina.setText(GUIKontroler.tekstPorudzbine());
+		ispisiTotal();
+	}
+
+	public void ispisiTotal() {
+		textFieldTotal.setText(GUIKontroler.getTotal() + "");
+	}
+
+	private JMenuBar getMenuBar_1() {
+		if (menuBar == null) {
+			menuBar = new JMenuBar();
+			menuBar.add(getMnHelp());
+		}
+		return menuBar;
+	}
+
+	private JMenu getMnHelp() {
+		if (mnHelp == null) {
+			mnHelp = new JMenu("Help");
+			mnHelp.add(getMntmAbout());
+		}
+		return mnHelp;
+	}
+
+	private JMenuItem getMntmAbout() {
+		if (mntmAbout == null) {
+			mntmAbout = new JMenuItem("About");
+			mntmAbout.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					JOptionPane.showMessageDialog(contentPane,
+							"Aplikacija picerije za porucivanje.\nAutori: Dusan Radivojevic, Nikola Simeunovic, Milena Petrovic",
+							"O programu", JOptionPane.INFORMATION_MESSAGE);
+				}
+			});
+		}
+		return mntmAbout;
+	}
+	private JScrollPane getScrollPane() {
+		if (scrollPane == null) {
+			scrollPane = new JScrollPane();
+			scrollPane.setBounds(51, 74, 355, 231);
+			scrollPane.setViewportView(getTextAreaPorudzbina());
+		}
+		return scrollPane;
 	}
 }

@@ -15,23 +15,22 @@ public class Picerija implements PicerijaInterfejs {
 	/**
 	 * Metoda koja podatke o porudzbini upisuje u data fajl.
 	 */
-	@Override
-	public void serijalizujUBin(LinkedList<StavkaPorudzbine> porudzbina, String putanjaDoFajla) throws Exception {
 
-		SOUpisiUBin.izvrsi(porudzbina, putanjaDoFajla);
+	@Override
+	public void serijalizujUBin(LinkedList<StavkaPorudzbine> porudzbina) throws Exception {
+
+		SOUpisiUBin.izvrsi(porudzbina);
 	}
-	
-	
+
 	/**
 	 * Metoda koja podatke o porudzbini upisuje u tekstualni fajl.
 	 */
 	@Override
-	public void serijalizujUTxt(LinkedList<StavkaPorudzbine> porudzbina, String putanjaDoFajla) throws Exception {
-		
-		SOUpisiUTxt.izvrsi(porudzbina, putanjaDoFajla);
-		
-	}
+	public void serijalizujUTxt(LinkedList<StavkaPorudzbine> porudzbina) throws Exception {
 
+		SOUpisiUTxt.izvrsi(porudzbina);
+
+	}
 
 	/**
 	 * Metoda koja pojedinacne stavke dodaje u listu porudzbina.

@@ -12,24 +12,22 @@ import main.porudzbina.StavkaSerializable;
 
 public class SOUpisiUBin {
 
-	public static void izvrsi(LinkedList<StavkaPorudzbine> porudzbina, String putanja) throws Exception {
-		
+	public static void izvrsi(LinkedList<StavkaPorudzbine> porudzbina) throws Exception {
+
 		if (porudzbina == null || porudzbina.size() == 0)
 			return;
-		
-		try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(putanja, true))) {
-			
+
+		try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("porudzbine/racun.out", true))) {
+
 			StavkaSerializable s = new StavkaSerializable();
 			s.setPorudzbina(porudzbina);
 			s.setDatum(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(Calendar.getInstance().getTime()));
-			
+
 			out.writeObject(s);
-			
-			porudzbina = null; //?
-			
+
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 	}
-	
+
 }

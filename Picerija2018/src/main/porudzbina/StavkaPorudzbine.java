@@ -52,7 +52,7 @@ public class StavkaPorudzbine {
 	 */
 	@Override
 	public String toString() {
-		return naziv + "\t" + cena + " din \n";
+		return naziv + "\t" + cena + " RSD \n";
 	}
 	
 }

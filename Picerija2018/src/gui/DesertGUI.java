@@ -13,6 +13,7 @@ import kontroler.GUIKontroler;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
 public class DesertGUI extends JFrame {
 	private JLabel lblNewSlika;
@@ -21,6 +22,7 @@ public class DesertGUI extends JFrame {
 	private JLabel lblTotal;
 	private JTextField textFieldTotal;
 	private JButton btnDodajUKorpu;
+	private JLabel lblRsd;
 
 	/**
 	 * Create the frame.
@@ -37,6 +39,7 @@ public class DesertGUI extends JFrame {
 		getContentPane().add(getLblTotal());
 		getContentPane().add(getTextFieldTotal());
 		getContentPane().add(getBtnDodajUKorpu());
+		getContentPane().add(getLblRsd());
 	}
 
 	private JLabel getLblNewSlika() {
@@ -76,6 +79,7 @@ public class DesertGUI extends JFrame {
 	private JTextField getTextFieldTotal() {
 		if (textFieldTotal == null) {
 			textFieldTotal = new JTextField();
+			textFieldTotal.setHorizontalAlignment(SwingConstants.RIGHT);
 			textFieldTotal.setEditable(false);
 			textFieldTotal.setBounds(72, 289, 116, 22);
 			textFieldTotal.setColumns(10);
@@ -103,5 +107,13 @@ public class DesertGUI extends JFrame {
 			btnDodajUKorpu.setBounds(322, 288, 138, 25);
 		}
 		return btnDodajUKorpu;
+	}
+	private JLabel getLblRsd() {
+		if (lblRsd == null) {
+			lblRsd = new JLabel("RSD");
+			lblRsd.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			lblRsd.setBounds(200, 292, 56, 16);
+		}
+		return lblRsd;
 	}
 }

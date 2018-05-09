@@ -29,6 +29,7 @@ public class PiceGUI extends JFrame {
 	private JLabel lblTotal;
 	private JTextField textFieldTotal;
 	private JButton btnDodajUKorpu;
+	private JLabel lblRsd;
 
 	/**
 	 * Create the frame.
@@ -47,6 +48,7 @@ public class PiceGUI extends JFrame {
 		getContentPane().add(getLblTotal());
 		getContentPane().add(getTextFieldTotal());
 		getContentPane().add(getBtnDodajUKorpu());
+		getContentPane().add(getLblRsd());
 	}
 
 	private JLabel getLblSlika() {
@@ -104,6 +106,7 @@ public class PiceGUI extends JFrame {
 	private JTextField getTextFieldTotal() {
 		if (textFieldTotal == null) {
 			textFieldTotal = new JTextField();
+			textFieldTotal.setHorizontalAlignment(SwingConstants.RIGHT);
 			textFieldTotal.setEditable(false);
 			textFieldTotal.setBounds(25, 319, 116, 22);
 			textFieldTotal.setColumns(10);
@@ -139,5 +142,13 @@ public class PiceGUI extends JFrame {
 			btnDodajUKorpu.setBounds(278, 316, 115, 25);
 		}
 		return btnDodajUKorpu;
+	}
+	private JLabel getLblRsd() {
+		if (lblRsd == null) {
+			lblRsd = new JLabel("RSD");
+			lblRsd.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			lblRsd.setBounds(153, 322, 56, 16);
+		}
+		return lblRsd;
 	}
 }

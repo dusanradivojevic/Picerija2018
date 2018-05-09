@@ -19,6 +19,7 @@ import javax.swing.JButton;
 import javax.swing.ButtonGroup;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
 public class PizzaGUI extends JFrame {	
 	private JPanel contentPane;
@@ -35,6 +36,7 @@ public class PizzaGUI extends JFrame {
 	private JLabel lblMala;
 	private JLabel lblSrednja;
 	private JLabel lblVelika;
+	private JLabel lblRsd;
 	
 
 	/**
@@ -58,6 +60,7 @@ public class PizzaGUI extends JFrame {
 		getContentPane().add(getLblMala());
 		getContentPane().add(getLblSrednja());
 		getContentPane().add(getLblVelika());
+		getContentPane().add(getLblRsd());
 	}
 	private JLabel getLblSlika() {
 		if (lblSlika == null) {
@@ -117,6 +120,7 @@ public class PizzaGUI extends JFrame {
 	private JTextField getTextFieldTotal() {
 		if (textFieldTotal == null) {
 			textFieldTotal = new JTextField();
+			textFieldTotal.setHorizontalAlignment(SwingConstants.RIGHT);
 			textFieldTotal.setEditable(false);
 			textFieldTotal.setBounds(40, 311, 116, 22);
 			textFieldTotal.setColumns(10);
@@ -176,5 +180,13 @@ public class PizzaGUI extends JFrame {
 			lblVelika.setBounds(446, 194, 56, 22);
 		}
 		return lblVelika;
+	}
+	private JLabel getLblRsd() {
+		if (lblRsd == null) {
+			lblRsd = new JLabel("RSD");
+			lblRsd.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			lblRsd.setBounds(166, 314, 56, 16);
+		}
+		return lblRsd;
 	}
 }

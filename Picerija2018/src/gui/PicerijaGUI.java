@@ -22,6 +22,11 @@ import java.awt.event.WindowEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
+import java.awt.Component;
+import javax.swing.SwingConstants;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 public class PicerijaGUI extends JFrame {
 
@@ -43,11 +48,15 @@ public class PicerijaGUI extends JFrame {
 	private JLabel lblTotal;
 	private JTextField textFieldTotal;
 	private JLabel lblRsd;
+	private JMenuBar menuBar;
+	private JMenu mnHelp;
+	private JMenuItem mntmAbout;
 
 	/**
 	 * Create the frame.
 	 */
 	public PicerijaGUI() {
+		setTitle("Picerija");
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent arg0) {
@@ -62,6 +71,7 @@ public class PicerijaGUI extends JFrame {
 
 		getContentPane().add(getPanel(), BorderLayout.WEST);
 		getContentPane().add(getPanel_1(), BorderLayout.EAST);
+		setJMenuBar(getMenuBar_1());
 	}
 
 	private JPanel getPanel() {
@@ -107,7 +117,7 @@ public class PicerijaGUI extends JFrame {
 
 	private JLabel getLblPice() {
 		if (lblPice == null) {
-			lblPice = new JLabel("Pice");
+			lblPice = new JLabel("Pi\u0107e");
 			lblPice.setBounds(31, 163, 56, 16);
 		}
 		return lblPice;
@@ -170,7 +180,7 @@ public class PicerijaGUI extends JFrame {
 
 	private JButton getBtnOdaberiPice() {
 		if (btnOdaberiPice == null) {
-			btnOdaberiPice = new JButton("Odaberi pice");
+			btnOdaberiPice = new JButton("Odaberi pi\u0107e");
 			btnOdaberiPice.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					// pozivam metodu kojoj saljem string
@@ -189,6 +199,16 @@ public class PicerijaGUI extends JFrame {
 	private JButton getBtnOdaberiDesert() {
 		if (btnOdaberiDesert == null) {
 			btnOdaberiDesert = new JButton("Odaberi desert");
+			btnOdaberiDesert.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					// pozivam metodu kojoj saljem string
+					// comboBoxPizza.getSelectedItem().toString()
+					// ona mi vraca string sa classpath za icon
+					// vraca mi i objekat klase pice
+
+					GUIKontroler.prikaziDesertGUI();
+				}
+			});
 			btnOdaberiDesert.setBounds(190, 333, 131, 25);
 		}
 		return btnOdaberiDesert;
@@ -196,7 +216,7 @@ public class PicerijaGUI extends JFrame {
 
 	private JLabel getLblPorudzbina() {
 		if (lblPorudzbina == null) {
-			lblPorudzbina = new JLabel("Porudzbina");
+			lblPorudzbina = new JLabel("Porud\u017Ebina");
 			lblPorudzbina.setFont(new Font("Tahoma", Font.PLAIN, 24));
 			lblPorudzbina.setBounds(154, 13, 147, 44);
 		}
@@ -205,14 +225,17 @@ public class PicerijaGUI extends JFrame {
 
 	private JButton getBtnPoruci() {
 		if (btnPoruci == null) {
-			btnPoruci = new JButton("Poruci");
+			btnPoruci = new JButton("Poru\u010Di");
 			btnPoruci.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					int opcija = JOptionPane.showConfirmDialog(contentPane,
-							"Da li zelite da porucite jos nesto?", "Kraj porudzbine", JOptionPane.YES_NO_OPTION);
+					int opcija = JOptionPane.showConfirmDialog(contentPane, "Da li zelite da porucite jos nesto?",
+							"Kraj porudzbine", JOptionPane.YES_NO_OPTION);
 
 					if (opcija == JOptionPane.NO_OPTION) {
 						GUIKontroler.zavrsiPorudzbinu();
+						JOptionPane.showMessageDialog(contentPane,
+								"Vasa porudzbina je evidentirana. Hvala na strpljenju!", "Uspesna porudzbina",
+								JOptionPane.INFORMATION_MESSAGE);
 						System.exit(0);
 					}
 				}
@@ -243,6 +266,7 @@ public class PicerijaGUI extends JFrame {
 	private JTextField getTextFieldTotal() {
 		if (textFieldTotal == null) {
 			textFieldTotal = new JTextField();
+			textFieldTotal.setHorizontalAlignment(SwingConstants.RIGHT);
 			textFieldTotal.setEditable(false);
 			textFieldTotal.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			textFieldTotal.setBounds(141, 341, 178, 28);
@@ -274,6 +298,36 @@ public class PicerijaGUI extends JFrame {
 	}
 
 	public void ispisiTotal() {
-		textFieldTotal.setText(GUIKontroler.getTotal() + "\tRSD");
+		textFieldTotal.setText(GUIKontroler.getTotal() + "");
+	}
+
+	private JMenuBar getMenuBar_1() {
+		if (menuBar == null) {
+			menuBar = new JMenuBar();
+			menuBar.add(getMnHelp());
+		}
+		return menuBar;
+	}
+
+	private JMenu getMnHelp() {
+		if (mnHelp == null) {
+			mnHelp = new JMenu("Help");
+			mnHelp.add(getMntmAbout());
+		}
+		return mnHelp;
+	}
+
+	private JMenuItem getMntmAbout() {
+		if (mntmAbout == null) {
+			mntmAbout = new JMenuItem("About");
+			mntmAbout.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					JOptionPane.showMessageDialog(contentPane,
+							"Aplikacija picerije za porucivanje.\nAutori: Dusan Radivojevic, Nikola Simeunovic, Milena Petrovic",
+							"O programu", JOptionPane.INFORMATION_MESSAGE);
+				}
+			});
+		}
+		return mntmAbout;
 	}
 }

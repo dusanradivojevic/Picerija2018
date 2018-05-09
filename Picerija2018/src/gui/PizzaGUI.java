@@ -10,6 +10,9 @@ import java.awt.Dimension;
 import javax.swing.JTextArea;
 import java.awt.Font;
 import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.ButtonGroup;
 
 public class PizzaGUI extends JFrame {
 	private JPanel contentPane;
@@ -22,13 +25,18 @@ public class PizzaGUI extends JFrame {
 	private JLabel lblMala;
 	private JLabel lblSrednja;
 	private JLabel lblVelika;
+	private JLabel lblTotal;
+	private JTextField textFieldTotal;
+	private JButton btnDodajUKorpu;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
 
 	/**
 	 * Create the frame.
 	 */
 	public PizzaGUI() {
+		setTitle("Pizza");
 		setResizable(false);
-		setBounds(100, 100, 572, 422);
+		setBounds(100, 100, 534, 398);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		getContentPane().setLayout(null);
 		getContentPane().add(getLblSlika());
@@ -40,12 +48,15 @@ public class PizzaGUI extends JFrame {
 		getContentPane().add(getLblMala());
 		getContentPane().add(getLblSrednja());
 		getContentPane().add(getLblVelika());
+		getContentPane().add(getLblTotal());
+		getContentPane().add(getTextFieldTotal());
+		getContentPane().add(getBtnDodajUKorpu());
 	}
 	private JLabel getLblSlika() {
 		if (lblSlika == null) {
 			lblSlika = new JLabel("Slika");
 			lblSlika.setPreferredSize(new Dimension(200, 200));
-			lblSlika.setBounds(40, 46, 157, 149);
+			lblSlika.setBounds(40, 46, 200, 200);
 		}
 		return lblSlika;
 	}
@@ -67,6 +78,7 @@ public class PizzaGUI extends JFrame {
 	private JRadioButton getRdbtnMala() {
 		if (rdbtnMala == null) {
 			rdbtnMala = new JRadioButton("");
+			buttonGroup.add(rdbtnMala);
 			rdbtnMala.setBounds(264, 217, 30, 41);
 		}
 		return rdbtnMala;
@@ -74,6 +86,7 @@ public class PizzaGUI extends JFrame {
 	private JRadioButton getRdbtnSrednja() {
 		if (rdbtnSrednja == null) {
 			rdbtnSrednja = new JRadioButton("");
+			buttonGroup.add(rdbtnSrednja);
 			rdbtnSrednja.setBounds(365, 217, 30, 41);
 		}
 		return rdbtnSrednja;
@@ -81,6 +94,7 @@ public class PizzaGUI extends JFrame {
 	private JRadioButton getRdbtnVelika() {
 		if (rdbtnVelika == null) {
 			rdbtnVelika = new JRadioButton("");
+			buttonGroup.add(rdbtnVelika);
 			rdbtnVelika.setBounds(469, 217, 30, 41);
 		}
 		return rdbtnVelika;
@@ -108,5 +122,29 @@ public class PizzaGUI extends JFrame {
 			lblVelika.setBounds(459, 199, 56, 16);
 		}
 		return lblVelika;
+	}
+	private JLabel getLblTotal() {
+		if (lblTotal == null) {
+			lblTotal = new JLabel("Total:");
+			lblTotal.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			lblTotal.setBounds(40, 272, 56, 16);
+		}
+		return lblTotal;
+	}
+	private JTextField getTextFieldTotal() {
+		if (textFieldTotal == null) {
+			textFieldTotal = new JTextField();
+			textFieldTotal.setEditable(false);
+			textFieldTotal.setBounds(40, 311, 116, 22);
+			textFieldTotal.setColumns(10);
+		}
+		return textFieldTotal;
+	}
+	private JButton getBtnDodajUKorpu() {
+		if (btnDodajUKorpu == null) {
+			btnDodajUKorpu = new JButton("Dodaj u korpu");
+			btnDodajUKorpu.setBounds(313, 310, 121, 25);
+		}
+		return btnDodajUKorpu;
 	}
 }

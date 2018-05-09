@@ -215,6 +215,7 @@ public class PicerijaGUI extends JFrame{
 	private JTextField getTextField() {
 		if (textField == null) {
 			textField = new JTextField();
+			textField.setEditable(false);
 			textField.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			textField.setBounds(141, 341, 178, 28);
 			textField.setColumns(10);

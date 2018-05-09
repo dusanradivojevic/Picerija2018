@@ -78,4 +78,8 @@ public class GUIKontroler {
 		return total;
 	}
 	
+	public static void zavrsiPorudzbinu() {
+		
+	}
+	
 }

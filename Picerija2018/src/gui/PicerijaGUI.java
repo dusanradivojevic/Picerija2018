@@ -21,6 +21,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
 
 public class PicerijaGUI extends JFrame{
 
@@ -38,9 +39,9 @@ public class PicerijaGUI extends JFrame{
 	private JButton btnOdaberiDesert;
 	private JLabel lblPorudzbina;
 	private JButton btnPoruci;
-	private JTextArea textArea;
+	private JTextArea textAreaPorudzbina;
 	private JLabel lblTotal;
-	private JTextField textField;
+	private JTextField textFieldTotal;
 	private JLabel lblRsd;
 
 	
@@ -55,9 +56,12 @@ public class PicerijaGUI extends JFrame{
 				ugasiAplikaciju();
 			}
 		});
+		setIconImage(Toolkit.getDefaultToolkit().getImage(PicerijaGUI.class.getResource("/icons/picerija.jpg")));
 		setResizable(false);
 		setBounds(100, 100, 816, 512);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		setLocationRelativeTo(null);
+		
 		getContentPane().add(getPanel(), BorderLayout.WEST);
 		getContentPane().add(getPanel_1(), BorderLayout.EAST);
 	}
@@ -86,9 +90,9 @@ public class PicerijaGUI extends JFrame{
 			panel_1.setLayout(null);
 			panel_1.add(getLblPorudzbina());
 			panel_1.add(getBtnPoruci());
-			panel_1.add(getTextArea());
+			panel_1.add(getTextAreaPorudzbina());
 			panel_1.add(getLblTotal());
-			panel_1.add(getTextField());
+			panel_1.add(getTextFieldTotal());
 			panel_1.add(getLblRsd());
 		}
 		return panel_1;
@@ -149,7 +153,6 @@ public class PicerijaGUI extends JFrame{
 					//vraca mi i objekat klase pizza
 					
 					GUIKontroler.prikaziPizzaGUI();
-					dispose();
 				}
 			});
 			btnOdaberiPizzu.setBounds(190, 88, 131, 25);
@@ -167,7 +170,6 @@ public class PicerijaGUI extends JFrame{
 					//vraca mi i objekat klase pice
 					
 					GUIKontroler.prikaziPiceGUI();
-					dispose();
 				}
 			});
 			btnOdaberiPice.setBounds(190, 204, 131, 25);
@@ -197,12 +199,12 @@ public class PicerijaGUI extends JFrame{
 		}
 		return btnPoruci;
 	}
-	private JTextArea getTextArea() {
-		if (textArea == null) {
-			textArea = new JTextArea();
-			textArea.setBounds(47, 70, 361, 243);
+	private JTextArea getTextAreaPorudzbina() {
+		if (textAreaPorudzbina == null) {
+			textAreaPorudzbina = new JTextArea();
+			textAreaPorudzbina.setBounds(47, 70, 361, 243);
 		}
-		return textArea;
+		return textAreaPorudzbina;
 	}
 	private JLabel getLblTotal() {
 		if (lblTotal == null) {
@@ -212,15 +214,15 @@ public class PicerijaGUI extends JFrame{
 		}
 		return lblTotal;
 	}
-	private JTextField getTextField() {
-		if (textField == null) {
-			textField = new JTextField();
-			textField.setEditable(false);
-			textField.setFont(new Font("Tahoma", Font.PLAIN, 17));
-			textField.setBounds(141, 341, 178, 28);
-			textField.setColumns(10);
+	private JTextField getTextFieldTotal() {
+		if (textFieldTotal == null) {
+			textFieldTotal = new JTextField();
+			textFieldTotal.setEditable(false);
+			textFieldTotal.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			textFieldTotal.setBounds(141, 341, 178, 28);
+			textFieldTotal.setColumns(10);
 		}
-		return textField;
+		return textFieldTotal;
 	}
 	private JLabel getLblRsd() {
 		if (lblRsd == null) {
@@ -237,5 +239,14 @@ public class PicerijaGUI extends JFrame{
 
 		if (opcija == JOptionPane.YES_OPTION)
 			System.exit(0);
+	}
+	
+	public void ispisiPorudzbinu() {
+		textAreaPorudzbina.setText(GUIKontroler.tekstPorudzbine());
+		ispisiTotal();
+	}
+	
+	public void ispisiTotal() {
+		textFieldTotal.setText(GUIKontroler.getTotal() + "\tRSD");
 	}
 }

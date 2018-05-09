@@ -39,4 +39,9 @@ public class StavkaPorudzbine {
 		this.naziv = naziv;
 		this.cena = cena;
 	}
+	
+	public double getCena() {
+		return cena;
+	}
+	
 }

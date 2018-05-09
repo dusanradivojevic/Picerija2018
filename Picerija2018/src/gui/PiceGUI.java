@@ -9,9 +9,14 @@ import java.awt.Font;
 import javax.swing.JTextArea;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
+
+import kontroler.GUIKontroler;
+
 import java.awt.Component;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PiceGUI extends JFrame {
 	private JPanel contentPane;
@@ -50,6 +55,7 @@ public class PiceGUI extends JFrame {
 		}
 		return lblSlika;
 	}
+
 	private JLabel getLblNaziv() {
 		if (lblNaziv == null) {
 			lblNaziv = new JLabel("Naziv");
@@ -58,6 +64,7 @@ public class PiceGUI extends JFrame {
 		}
 		return lblNaziv;
 	}
+
 	private JTextArea getTextAreaOpis() {
 		if (textAreaOpis == null) {
 			textAreaOpis = new JTextArea();
@@ -65,6 +72,7 @@ public class PiceGUI extends JFrame {
 		}
 		return textAreaOpis;
 	}
+
 	private JRadioButton getRdbtn05() {
 		if (rdbtn05 == null) {
 			rdbtn05 = new JRadioButton("0,5 l");
@@ -73,6 +81,7 @@ public class PiceGUI extends JFrame {
 		}
 		return rdbtn05;
 	}
+
 	private JRadioButton getRdbtn033() {
 		if (rdbtn033 == null) {
 			rdbtn033 = new JRadioButton("0,33 l");
@@ -81,6 +90,7 @@ public class PiceGUI extends JFrame {
 		}
 		return rdbtn033;
 	}
+
 	private JLabel getLblTotal() {
 		if (lblTotal == null) {
 			lblTotal = new JLabel("Total:");
@@ -89,6 +99,7 @@ public class PiceGUI extends JFrame {
 		}
 		return lblTotal;
 	}
+
 	private JTextField getTextFieldTotal() {
 		if (textFieldTotal == null) {
 			textFieldTotal = new JTextField();
@@ -98,9 +109,32 @@ public class PiceGUI extends JFrame {
 		}
 		return textFieldTotal;
 	}
+
 	private JButton getBtnDodajUKorpu() {
 		if (btnDodajUKorpu == null) {
 			btnDodajUKorpu = new JButton("Dodaj u korpu");
+			btnDodajUKorpu.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					String velicina = null;
+					if (rdbtn033.isSelected())
+						velicina = "0,33 l ";
+					if (rdbtn05.isSelected())
+						velicina = "0,5 l ";
+
+					try {
+						GUIKontroler.ubaciPorudzbinuUListu(velicina + lblNaziv.getText(),
+								Double.parseDouble(textFieldTotal.getText()));
+					} catch (NumberFormatException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+					dispose();
+				}
+			});
 			btnDodajUKorpu.setBounds(278, 316, 115, 25);
 		}
 		return btnDodajUKorpu;

@@ -7,9 +7,14 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.JButton;
 
-public class DesertGUI extends JFrame{
+import kontroler.GUIKontroler;
+
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class DesertGUI extends JFrame {
 	private JLabel lblNewSlika;
 	private JLabel lblNaziv;
 	private JTextArea textAreaOpis;
@@ -41,6 +46,7 @@ public class DesertGUI extends JFrame{
 		}
 		return lblNewSlika;
 	}
+
 	private JLabel getLblNaziv() {
 		if (lblNaziv == null) {
 			lblNaziv = new JLabel("Naziv");
@@ -49,6 +55,7 @@ public class DesertGUI extends JFrame{
 		}
 		return lblNaziv;
 	}
+
 	private JTextArea getTextAreaOpis() {
 		if (textAreaOpis == null) {
 			textAreaOpis = new JTextArea();
@@ -56,6 +63,7 @@ public class DesertGUI extends JFrame{
 		}
 		return textAreaOpis;
 	}
+
 	private JLabel getLblTotal() {
 		if (lblTotal == null) {
 			lblTotal = new JLabel("Total:");
@@ -64,6 +72,7 @@ public class DesertGUI extends JFrame{
 		}
 		return lblTotal;
 	}
+
 	private JTextField getTextFieldTotal() {
 		if (textFieldTotal == null) {
 			textFieldTotal = new JTextField();
@@ -73,9 +82,24 @@ public class DesertGUI extends JFrame{
 		}
 		return textFieldTotal;
 	}
+
 	private JButton getBtnDodajUKorpu() {
 		if (btnDodajUKorpu == null) {
 			btnDodajUKorpu = new JButton("Dodaj u korpu");
+			btnDodajUKorpu.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					try {
+						GUIKontroler.ubaciPorudzbinuUListu(lblNaziv.getText(),
+								Double.parseDouble(textFieldTotal.getText()));
+					} catch (NumberFormatException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+			});
 			btnDodajUKorpu.setBounds(322, 288, 138, 25);
 		}
 		return btnDodajUKorpu;

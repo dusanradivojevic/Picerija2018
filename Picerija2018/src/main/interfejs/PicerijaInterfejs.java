@@ -1,7 +1,6 @@
 package main.interfejs;
 
 import java.util.LinkedList;
-
 import main.porudzbina.StavkaPorudzbine;
 
 public interface PicerijaInterfejs {
@@ -11,5 +10,5 @@ public interface PicerijaInterfejs {
 	public void serijalizujUTxt(LinkedList<StavkaPorudzbine> porudzbina) throws Exception;
 
 	public void dodajPorudzbinuUListu(LinkedList<StavkaPorudzbine> porudzbina, String naziv, double cena)
-			throws Exception;
+			throws RuntimeException;
 }

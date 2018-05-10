@@ -1,7 +1,5 @@
 package gui;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
@@ -11,6 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.DefaultComboBoxModel;
+
 import java.awt.Font;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -25,12 +24,12 @@ import java.awt.event.WindowEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
-import java.awt.Component;
 import javax.swing.SwingConstants;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
+import java.awt.Color;
 
 public class PicerijaGUI extends JFrame {
 
@@ -61,6 +60,7 @@ public class PicerijaGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public PicerijaGUI() {
+		getContentPane().setBackground(Color.LIGHT_GRAY);
 		setTitle("Picerija");
 		addWindowListener(new WindowAdapter() {
 			@Override
@@ -82,6 +82,7 @@ public class PicerijaGUI extends JFrame {
 	private JPanel getPanel() {
 		if (panel == null) {
 			panel = new JPanel();
+			panel.setBackground(Color.LIGHT_GRAY);
 			panel.setPreferredSize(new Dimension(350, 10));
 			panel.setLayout(null);
 			panel.add(getLblPizza());
@@ -100,6 +101,7 @@ public class PicerijaGUI extends JFrame {
 	private JPanel getPanel_1() {
 		if (panel_1 == null) {
 			panel_1 = new JPanel();
+			panel_1.setBackground(Color.LIGHT_GRAY);
 			panel_1.setPreferredSize(new Dimension(450, 10));
 			panel_1.setLayout(null);
 			panel_1.add(getLblPorudzbina());
@@ -115,6 +117,7 @@ public class PicerijaGUI extends JFrame {
 	private JLabel getLblPizza() {
 		if (lblPizza == null) {
 			lblPizza = new JLabel("Pizza");
+			lblPizza.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			lblPizza.setBounds(31, 43, 56, 16);
 		}
 		return lblPizza;
@@ -123,6 +126,7 @@ public class PicerijaGUI extends JFrame {
 	private JLabel getLblPice() {
 		if (lblPice == null) {
 			lblPice = new JLabel("Pi\u0107e");
+			lblPice.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			lblPice.setBounds(31, 163, 56, 16);
 		}
 		return lblPice;
@@ -131,6 +135,7 @@ public class PicerijaGUI extends JFrame {
 	private JLabel getLblDesert() {
 		if (lblDesert == null) {
 			lblDesert = new JLabel("Desert");
+			lblDesert.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			lblDesert.setBounds(31, 291, 56, 16);
 		}
 		return lblDesert;
@@ -139,8 +144,11 @@ public class PicerijaGUI extends JFrame {
 	private JComboBox getComboBoxPizza() {
 		if (comboBoxPizza == null) {
 			comboBoxPizza = new JComboBox();
-			comboBoxPizza.setModel(new DefaultComboBoxModel(new String[] {"Margarita", "Vegetariana", "Vesuvio", "Capricciosa", "Serbiana"}));
-			comboBoxPizza.setBounds(31, 89, 111, 22);
+			comboBoxPizza.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			comboBoxPizza.setForeground(Color.BLACK);
+			comboBoxPizza.setModel(new DefaultComboBoxModel(
+					new String[] { "Margarita", "Vegetariana", "Vesuvio", "Capricciosa", "Serbiana" }));
+			comboBoxPizza.setBounds(31, 89, 122, 34);
 		}
 		return comboBoxPizza;
 	}
@@ -148,8 +156,10 @@ public class PicerijaGUI extends JFrame {
 	private JComboBox getComboBoxPice() {
 		if (comboBoxPice == null) {
 			comboBoxPice = new JComboBox();
-			comboBoxPice.setModel(new DefaultComboBoxModel(new String[] {"Coca-cola", "Fanta", "Sprite"}));
-			comboBoxPice.setBounds(31, 205, 111, 22);
+			comboBoxPice.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			comboBoxPice.setForeground(Color.BLACK);
+			comboBoxPice.setModel(new DefaultComboBoxModel(new String[] { "Coca-cola", "Fanta", "Sprite" }));
+			comboBoxPice.setBounds(31, 205, 122, 34);
 		}
 		return comboBoxPice;
 	}
@@ -157,9 +167,10 @@ public class PicerijaGUI extends JFrame {
 	private JComboBox getComboBox_1() {
 		if (comboBoxDesert == null) {
 			comboBoxDesert = new JComboBox();
-			comboBoxDesert
-					.setModel(new DefaultComboBoxModel(new String[] {"Cokoladni mus", "Tiramisu", "Orasnice"}));
-			comboBoxDesert.setBounds(31, 334, 111, 22);
+			comboBoxDesert.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			comboBoxDesert.setForeground(Color.BLACK);
+			comboBoxDesert.setModel(new DefaultComboBoxModel(new String[] { "Cokoladni mus", "Tiramisu", "Orasnice" }));
+			comboBoxDesert.setBounds(31, 334, 122, 34);
 		}
 		return comboBoxDesert;
 	}
@@ -167,6 +178,7 @@ public class PicerijaGUI extends JFrame {
 	private JButton getBtnOdaberiPizzu() {
 		if (btnOdaberiPizzu == null) {
 			btnOdaberiPizzu = new JButton("Odaberi pizzu");
+			btnOdaberiPizzu.setFont(new Font("Tahoma", Font.PLAIN, 15));
 			btnOdaberiPizzu.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					Pizza pizza = GUIKontroler.nadjiPizzu(comboBoxPizza.getSelectedItem().toString());
@@ -174,7 +186,7 @@ public class PicerijaGUI extends JFrame {
 					GUIKontroler.prikaziPizzaGUI(pizza);
 				}
 			});
-			btnOdaberiPizzu.setBounds(190, 88, 131, 25);
+			btnOdaberiPizzu.setBounds(190, 88, 131, 35);
 		}
 		return btnOdaberiPizzu;
 	}
@@ -182,6 +194,7 @@ public class PicerijaGUI extends JFrame {
 	private JButton getBtnOdaberiPice() {
 		if (btnOdaberiPice == null) {
 			btnOdaberiPice = new JButton("Odaberi pi\u0107e");
+			btnOdaberiPice.setFont(new Font("Tahoma", Font.PLAIN, 15));
 			btnOdaberiPice.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					Pice pice = GUIKontroler.nadjiPice(comboBoxPice.getSelectedItem().toString());
@@ -189,7 +202,7 @@ public class PicerijaGUI extends JFrame {
 					GUIKontroler.prikaziPiceGUI(pice);
 				}
 			});
-			btnOdaberiPice.setBounds(190, 204, 131, 25);
+			btnOdaberiPice.setBounds(190, 204, 131, 35);
 		}
 		return btnOdaberiPice;
 	}
@@ -197,6 +210,7 @@ public class PicerijaGUI extends JFrame {
 	private JButton getBtnOdaberiDesert() {
 		if (btnOdaberiDesert == null) {
 			btnOdaberiDesert = new JButton("Odaberi desert");
+			btnOdaberiDesert.setFont(new Font("Tahoma", Font.PLAIN, 15));
 			btnOdaberiDesert.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					Desert desert = GUIKontroler.nadjiDesert(comboBoxDesert.getSelectedItem().toString());
@@ -204,7 +218,7 @@ public class PicerijaGUI extends JFrame {
 					GUIKontroler.prikaziDesertGUI(desert);
 				}
 			});
-			btnOdaberiDesert.setBounds(190, 333, 131, 25);
+			btnOdaberiDesert.setBounds(190, 333, 131, 35);
 		}
 		return btnOdaberiDesert;
 	}
@@ -227,6 +241,9 @@ public class PicerijaGUI extends JFrame {
 							"Kraj porudzbine", JOptionPane.YES_NO_OPTION);
 
 					if (opcija == JOptionPane.NO_OPTION) {
+						if (textFieldTotal.getText().equals("")) {
+							System.exit(0);
+						}
 						GUIKontroler.zavrsiPorudzbinu();
 						JOptionPane.showMessageDialog(contentPane,
 								"Vasa porudzbina je evidentirana. Hvala na strpljenju!", "Uspesna porudzbina",
@@ -244,6 +261,7 @@ public class PicerijaGUI extends JFrame {
 	private JTextArea getTextAreaPorudzbina() {
 		if (textAreaPorudzbina == null) {
 			textAreaPorudzbina = new JTextArea();
+			textAreaPorudzbina.setBackground(Color.LIGHT_GRAY);
 			textAreaPorudzbina.setEditable(false);
 		}
 		return textAreaPorudzbina;
@@ -329,7 +347,7 @@ public class PicerijaGUI extends JFrame {
 	private JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(51, 74, 355, 231);
+			scrollPane.setBounds(51, 74, 348, 231);
 			scrollPane.setViewportView(getTextAreaPorudzbina());
 		}
 		return scrollPane;

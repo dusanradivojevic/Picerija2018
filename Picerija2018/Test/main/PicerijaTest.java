@@ -14,7 +14,7 @@ import main.porudzbina.StavkaPorudzbine;
 
 public class PicerijaTest {
 	private Picerija p;
-	LinkedList<StavkaPorudzbine> l;
+	private LinkedList<StavkaPorudzbine> l;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {

@@ -1,7 +1,5 @@
 package gui;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -17,9 +15,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import java.awt.Dimension;
-import javax.swing.border.EtchedBorder;
-import javax.swing.border.TitledBorder;
-import java.awt.Window.Type;
+import java.awt.Color;
 
 public class DesertGUI extends JFrame {
 	private JLabel lblNewSlika;
@@ -36,6 +32,7 @@ public class DesertGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public DesertGUI(Desert desert) {
+		getContentPane().setBackground(Color.GRAY);
 		setUndecorated(true);
 		this.desert = desert;
 		setTitle("Desert");
@@ -73,6 +70,7 @@ public class DesertGUI extends JFrame {
 	private JLabel getLblNaziv() {
 		if (lblNaziv == null) {
 			lblNaziv = new JLabel("Naziv");
+			lblNaziv.setForeground(Color.WHITE);
 			lblNaziv.setHorizontalAlignment(SwingConstants.CENTER);
 			lblNaziv.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			lblNaziv.setBounds(335, 38, 136, 33);
@@ -83,10 +81,13 @@ public class DesertGUI extends JFrame {
 	private JTextArea getTextAreaOpis() {
 		if (textAreaOpis == null) {
 			textAreaOpis = new JTextArea();
+			textAreaOpis.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			textAreaOpis.setBackground(Color.GRAY);
+			textAreaOpis.setForeground(Color.WHITE);
 			textAreaOpis.setMaximumSize(new Dimension(4, 22));
 			textAreaOpis.setBorder(null);
 			textAreaOpis.setEditable(false);
-			textAreaOpis.setBounds(335, 84, 136, 106);
+			textAreaOpis.setBounds(335, 95, 136, 106);
 		}
 		return textAreaOpis;
 	}
@@ -94,6 +95,7 @@ public class DesertGUI extends JFrame {
 	private JLabel getLblTotal() {
 		if (lblTotal == null) {
 			lblTotal = new JLabel("Total:");
+			lblTotal.setForeground(Color.WHITE);
 			lblTotal.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			lblTotal.setBounds(72, 260, 56, 16);
 		}
@@ -103,6 +105,7 @@ public class DesertGUI extends JFrame {
 	private JTextField getTextFieldTotal() {
 		if (textFieldTotal == null) {
 			textFieldTotal = new JTextField();
+			textFieldTotal.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			textFieldTotal.setHorizontalAlignment(SwingConstants.RIGHT);
 			textFieldTotal.setEditable(false);
 			textFieldTotal.setBounds(72, 289, 116, 22);
@@ -120,10 +123,8 @@ public class DesertGUI extends JFrame {
 						GUIKontroler.ubaciPorudzbinuUListu(lblNaziv.getText(),
 								Double.parseDouble(textFieldTotal.getText()));
 					} catch (NumberFormatException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					} catch (Exception e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 					dispose();
@@ -137,11 +138,13 @@ public class DesertGUI extends JFrame {
 	private JLabel getLblRsd() {
 		if (lblRsd == null) {
 			lblRsd = new JLabel("RSD");
+			lblRsd.setForeground(Color.WHITE);
 			lblRsd.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			lblRsd.setBounds(200, 292, 56, 16);
 		}
 		return lblRsd;
 	}
+
 	private JButton getBtnNewButton() {
 		if (btnNewButton == null) {
 			btnNewButton = new JButton("Nazad");

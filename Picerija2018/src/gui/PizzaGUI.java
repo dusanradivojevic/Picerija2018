@@ -1,7 +1,5 @@
 package gui;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -14,7 +12,6 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import kontroler.GUIKontroler;
-import main.porudzbina.StavkaPorudzbine;
 import stavke.Pizza;
 
 import javax.swing.JButton;
@@ -22,7 +19,7 @@ import javax.swing.ButtonGroup;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
-import java.awt.Window.Type;
+import java.awt.Color;
 
 public class PizzaGUI extends JFrame {
 	private JPanel contentPane;
@@ -47,6 +44,7 @@ public class PizzaGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public PizzaGUI(Pizza pizza) {
+		getContentPane().setBackground(Color.GRAY);
 		setUndecorated(true);
 		this.pizza = pizza;
 
@@ -90,6 +88,7 @@ public class PizzaGUI extends JFrame {
 	private JLabel getLblNaziv() {
 		if (lblNaziv == null) {
 			lblNaziv = new JLabel("naziv");
+			lblNaziv.setForeground(Color.WHITE);
 			lblNaziv.setHorizontalAlignment(SwingConstants.CENTER);
 			lblNaziv.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			lblNaziv.setBounds(284, 25, 202, 30);
@@ -100,9 +99,12 @@ public class PizzaGUI extends JFrame {
 	private JTextArea getTxtrOpis() {
 		if (txtrOpis == null) {
 			txtrOpis = new JTextArea();
+			txtrOpis.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			txtrOpis.setBackground(Color.GRAY);
+			txtrOpis.setForeground(Color.WHITE);
 			txtrOpis.setMaximumSize(new Dimension(4, 22));
 			txtrOpis.setEditable(false);
-			txtrOpis.setBounds(284, 66, 173, 129);
+			txtrOpis.setBounds(284, 66, 173, 141);
 		}
 		return txtrOpis;
 	}
@@ -110,6 +112,7 @@ public class PizzaGUI extends JFrame {
 	private JRadioButton getRdbtnMala() {
 		if (rdbtnMala == null) {
 			rdbtnMala = new JRadioButton("");
+			rdbtnMala.setBackground(Color.GRAY);
 			rdbtnMala.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					textFieldTotal.setText(pizza.getMala() + "");
@@ -124,6 +127,7 @@ public class PizzaGUI extends JFrame {
 	private JRadioButton getRdbtnSrednja() {
 		if (rdbtnSrednja == null) {
 			rdbtnSrednja = new JRadioButton("");
+			rdbtnSrednja.setBackground(Color.GRAY);
 			rdbtnSrednja.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					textFieldTotal.setText(pizza.getSrednja() + "");
@@ -138,6 +142,7 @@ public class PizzaGUI extends JFrame {
 	private JRadioButton getRdbtnVelika() {
 		if (rdbtnVelika == null) {
 			rdbtnVelika = new JRadioButton("");
+			rdbtnVelika.setBackground(Color.GRAY);
 			rdbtnVelika.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					textFieldTotal.setText(pizza.getVelika() + "");
@@ -152,6 +157,7 @@ public class PizzaGUI extends JFrame {
 	private JLabel getLblTotal() {
 		if (lblTotal == null) {
 			lblTotal = new JLabel("Total:");
+			lblTotal.setForeground(Color.WHITE);
 			lblTotal.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			lblTotal.setBounds(40, 272, 56, 16);
 		}
@@ -161,6 +167,7 @@ public class PizzaGUI extends JFrame {
 	private JTextField getTextFieldTotal() {
 		if (textFieldTotal == null) {
 			textFieldTotal = new JTextField();
+			textFieldTotal.setFont(new Font("Dialog", Font.BOLD, 12));
 			textFieldTotal.setHorizontalAlignment(SwingConstants.RIGHT);
 			textFieldTotal.setEditable(false);
 			textFieldTotal.setBounds(40, 311, 116, 22);
@@ -173,8 +180,8 @@ public class PizzaGUI extends JFrame {
 		if (btnDodajUKorpu == null) {
 			btnDodajUKorpu = new JButton("Dodaj u korpu");
 			btnDodajUKorpu.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent arg0) {			
-					
+				public void actionPerformed(ActionEvent arg0) {
+
 					String velicina = null;
 					if (rdbtnMala.isSelected())
 						velicina = "Mala ";
@@ -182,24 +189,22 @@ public class PizzaGUI extends JFrame {
 						velicina = "Srednja ";
 					if (rdbtnVelika.isSelected())
 						velicina = "Velika ";
-					
+
 					try {
 						if (velicina == null) {
-							JOptionPane.showMessageDialog(contentPane, "Molim Vas, odaberite velicinu pice!", 
-									null, JOptionPane.WARNING_MESSAGE);
-							
+							JOptionPane.showMessageDialog(contentPane, "Molim Vas, odaberite velicinu pice!", null,
+									JOptionPane.WARNING_MESSAGE);
+
 							return;
 						}
 						GUIKontroler.ubaciPorudzbinuUListu((velicina + lblNaziv.getText()),
 								Double.parseDouble(textFieldTotal.getText()));
 					} catch (NumberFormatException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					} catch (Exception e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-				dispose();
+					dispose();
 				}
 			});
 			btnDodajUKorpu.setBounds(315, 284, 121, 25);
@@ -210,7 +215,8 @@ public class PizzaGUI extends JFrame {
 	private JLabel getLblMala() {
 		if (lblMala == null) {
 			lblMala = new JLabel("Mala");
-			lblMala.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			lblMala.setForeground(Color.WHITE);
+			lblMala.setFont(new Font("Tahoma", Font.BOLD, 15));
 			lblMala.setBounds(263, 208, 56, 22);
 		}
 		return lblMala;
@@ -219,7 +225,8 @@ public class PizzaGUI extends JFrame {
 	private JLabel getLblSrednja() {
 		if (lblSrednja == null) {
 			lblSrednja = new JLabel("Srednja");
-			lblSrednja.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			lblSrednja.setForeground(Color.WHITE);
+			lblSrednja.setFont(new Font("Tahoma", Font.BOLD, 15));
 			lblSrednja.setBounds(349, 206, 62, 26);
 		}
 		return lblSrednja;
@@ -228,7 +235,8 @@ public class PizzaGUI extends JFrame {
 	private JLabel getLblVelika() {
 		if (lblVelika == null) {
 			lblVelika = new JLabel("Velika");
-			lblVelika.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			lblVelika.setForeground(Color.WHITE);
+			lblVelika.setFont(new Font("Tahoma", Font.BOLD, 15));
 			lblVelika.setBounds(446, 208, 56, 22);
 		}
 		return lblVelika;
@@ -237,11 +245,13 @@ public class PizzaGUI extends JFrame {
 	private JLabel getLblRsd() {
 		if (lblRsd == null) {
 			lblRsd = new JLabel("RSD");
+			lblRsd.setForeground(Color.WHITE);
 			lblRsd.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			lblRsd.setBounds(166, 314, 56, 16);
 		}
 		return lblRsd;
 	}
+
 	private JButton getBtnNewButton() {
 		if (btnNewButton == null) {
 			btnNewButton = new JButton("Nazad");

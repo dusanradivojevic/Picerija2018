@@ -10,7 +10,6 @@ import main.sistemskeOperacije.SOPretraziPica;
 import main.sistemskeOperacije.SOPretraziPizze;
 import main.sistemskeOperacije.SOUpisiUBin;
 import main.sistemskeOperacije.SOUpisiUTxt;
-import meni.Meni;
 import stavke.Desert;
 import stavke.Pice;
 import stavke.Pizza;

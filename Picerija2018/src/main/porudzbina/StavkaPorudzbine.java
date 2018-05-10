@@ -50,15 +50,19 @@ public class StavkaPorudzbine {
 	}
 	
 	/**
-	 * Metoda koja ispisuje osnovne podatke o stavki odnosno naziv i cenu.
+	 * Ispisuje osnovne podatke o stavki formatirane na odgovarajuci nacin.
 	 * 
 	 * @return String Formatiran tekst koji sadrzi naziv i cenu stavke u dinarima.
 	 */
-	@Override
 	public String toString() {
 		return String.format("%50s", naziv + "\t" + cena + " RSD \n");
 	}
 	
+	/**
+	 * Ispisuje osnovne podatke o stavki odnosno cenu i naziv.
+	 * 
+	 * @return String Tekst koji sadrzi naziv i cenu stavke u dinarima.
+	 */
 	public String toString2() {
 		return naziv + "\t" + cena + " RSD \n";
 	}

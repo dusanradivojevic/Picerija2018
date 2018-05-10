@@ -16,6 +16,7 @@ public class SODodajPorudzbinuUListu {
 			throw new RuntimeException("Nepravilna vrednost cene stavke!");
 
 		porudzbina.add(new StavkaPorudzbine(naziv, cena));
+		
 		return porudzbina;
 	}
 

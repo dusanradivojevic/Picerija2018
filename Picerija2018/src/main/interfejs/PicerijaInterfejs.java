@@ -12,7 +12,7 @@ public interface PicerijaInterfejs {
 
 	public void serijalizujUTxt(LinkedList<StavkaPorudzbine> porudzbina) throws Exception;
 
-	public void dodajPorudzbinuUListu(LinkedList<StavkaPorudzbine> porudzbina, String naziv, double cena)
+	public LinkedList<StavkaPorudzbine> dodajPorudzbinuUListu(LinkedList<StavkaPorudzbine> porudzbina, String naziv, double cena)
 			throws RuntimeException;
 
 	public Pizza pretraziPizze(String p) throws RuntimeException;

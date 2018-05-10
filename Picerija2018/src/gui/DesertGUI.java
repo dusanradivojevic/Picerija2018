@@ -45,13 +45,14 @@ public class DesertGUI extends JFrame {
 		getContentPane().add(getTextFieldTotal());
 		getContentPane().add(getBtnDodajUKorpu());
 		getContentPane().add(getLblRsd());
-		
+
 		// kreiranje prozora u zavisnosti od odabranog deserta
-		
+
 		lblNaziv.setText(desert.getNaziv());
 		lblNewSlika.setIcon(new ImageIcon(DesertGUI.class.getResource(desert.getPutanjaDoSlike())));
 		textAreaOpis.setText(desert.getOpis());
-		
+		textFieldTotal.setText(desert.getCena() + "");
+
 	}
 
 	private JLabel getLblNewSlika() {
@@ -76,6 +77,7 @@ public class DesertGUI extends JFrame {
 	private JTextArea getTextAreaOpis() {
 		if (textAreaOpis == null) {
 			textAreaOpis = new JTextArea();
+			textAreaOpis.setEditable(false);
 			textAreaOpis.setBounds(335, 84, 136, 106);
 		}
 		return textAreaOpis;
@@ -116,12 +118,14 @@ public class DesertGUI extends JFrame {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
+					dispose();
 				}
 			});
 			btnDodajUKorpu.setBounds(322, 288, 138, 25);
 		}
 		return btnDodajUKorpu;
 	}
+
 	private JLabel getLblRsd() {
 		if (lblRsd == null) {
 			lblRsd = new JLabel("RSD");

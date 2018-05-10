@@ -73,10 +73,10 @@ public class Picerija implements PicerijaInterfejs {
 	 *             stavke negativna.
 	 */
 	@Override
-	public void dodajPorudzbinuUListu(LinkedList<StavkaPorudzbine> porudzbina, String naziv, double cena)
+	public LinkedList<StavkaPorudzbine> dodajPorudzbinuUListu(LinkedList<StavkaPorudzbine> porudzbina, String naziv, double cena)
 			throws RuntimeException {
 
-		SODodajPorudzbinuUListu.izvrsi(porudzbina, naziv, cena);
+		return SODodajPorudzbinuUListu.izvrsi(porudzbina, naziv, cena);
 	}
 
 	/**

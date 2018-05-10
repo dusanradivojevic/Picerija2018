@@ -6,15 +6,17 @@ import main.porudzbina.StavkaPorudzbine;
 
 public class SODodajPorudzbinuUListu {
 
-	public static void izvrsi(LinkedList<StavkaPorudzbine> porudzbina, String naziv, double cena) throws RuntimeException {
-		
-		if(naziv == null || naziv.length() < 2)
+	public static LinkedList<StavkaPorudzbine> izvrsi(LinkedList<StavkaPorudzbine> porudzbina, String naziv,
+			double cena) throws RuntimeException {
+
+		if (naziv == null || naziv.length() < 2)
 			throw new RuntimeException("Nepravilan naziv stavke!");
-		
-		if(cena < 0)
+
+		if (cena < 0)
 			throw new RuntimeException("Nepravilna vrednost cene stavke!");
-		
+
 		porudzbina.add(new StavkaPorudzbine(naziv, cena));
+		return porudzbina;
 	}
-	
+
 }

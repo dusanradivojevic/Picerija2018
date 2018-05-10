@@ -139,8 +139,7 @@ public class PicerijaGUI extends JFrame {
 	private JComboBox getComboBoxPizza() {
 		if (comboBoxPizza == null) {
 			comboBoxPizza = new JComboBox();
-			comboBoxPizza.setModel(new DefaultComboBoxModel(
-					new String[] { "Margarita", "Vegetariano", "Vesuvio", "Capricciosa", "Serbiana" }));
+			comboBoxPizza.setModel(new DefaultComboBoxModel(new String[] {"Margarita", "Vegetariana", "Vesuvio", "Capricciosa", "Serbiana"}));
 			comboBoxPizza.setBounds(31, 89, 111, 22);
 		}
 		return comboBoxPizza;
@@ -149,7 +148,7 @@ public class PicerijaGUI extends JFrame {
 	private JComboBox getComboBoxPice() {
 		if (comboBoxPice == null) {
 			comboBoxPice = new JComboBox();
-			comboBoxPice.setModel(new DefaultComboBoxModel(new String[] { "\u0160ljiva", "Kru\u0161ka", "Dunja" }));
+			comboBoxPice.setModel(new DefaultComboBoxModel(new String[] {"Coca-cola", "Fanta", "Sprite"}));
 			comboBoxPice.setBounds(31, 205, 111, 22);
 		}
 		return comboBoxPice;
@@ -159,7 +158,7 @@ public class PicerijaGUI extends JFrame {
 		if (comboBoxDesert == null) {
 			comboBoxDesert = new JComboBox();
 			comboBoxDesert
-					.setModel(new DefaultComboBoxModel(new String[] { "\u010Cokoladni mus", "Tiramisu", "Orasnice" }));
+					.setModel(new DefaultComboBoxModel(new String[] {"Cokoladni mus", "Tiramisu", "Orasnice"}));
 			comboBoxDesert.setBounds(31, 334, 111, 22);
 		}
 		return comboBoxDesert;
@@ -245,6 +244,7 @@ public class PicerijaGUI extends JFrame {
 	private JTextArea getTextAreaPorudzbina() {
 		if (textAreaPorudzbina == null) {
 			textAreaPorudzbina = new JTextArea();
+			textAreaPorudzbina.setEditable(false);
 		}
 		return textAreaPorudzbina;
 	}

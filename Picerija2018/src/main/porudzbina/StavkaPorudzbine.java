@@ -56,7 +56,7 @@ public class StavkaPorudzbine {
 	 */
 	@Override
 	public String toString() {
-		return naziv + "\t" + cena + " RSD \n";
+		return naziv + "\t\t" + cena + " RSD \n";
 	}
 	
 }

@@ -19,6 +19,7 @@ public class PicerijaTest {
 	private LinkedList<StavkaPorudzbine> l;
 	private StavkaPorudzbine s;
 	private Pizza pizza;
+	private Pice pice;
 	
 
 	@BeforeClass
@@ -36,7 +37,7 @@ public class PicerijaTest {
 		s= new StavkaPorudzbine("Sladoled",200);
 		pizza = new Pizza("Capricciosa", "/meni/pizze/rsz_capricciosa.jpg", 500, 740, 1090,
 				"- pelat\n- sir\n- praska sunka\n- svez paradajz\n- sampinjoni\n- masline");
-		
+		pice = new Pice("/meni/pice/rsz_coca-cola.jpg", "Coca-cola", 80, 120);
 	}
 
 	@After
@@ -80,7 +81,10 @@ public class PicerijaTest {
 		p.pretraziPica(null);
 	}
 	
-	
+	@Test 
+	public void testPretraziPica() {
+		assertEquals(pice.getNaziv(), p.pretraziPica("Coca-cola").getNaziv());
+	}
 
 	@Test (expected = java.lang.RuntimeException.class)
 	public void testPretraziDeserteNull() {

@@ -16,6 +16,9 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import kontroler.GUIKontroler;
+import stavke.Desert;
+import stavke.Pice;
+import stavke.Pizza;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -167,12 +170,12 @@ public class PicerijaGUI extends JFrame {
 			btnOdaberiPizzu = new JButton("Odaberi pizzu");
 			btnOdaberiPizzu.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
+					Pizza pizza = null;
 					// pozivam metodu kojoj saljem string
 					// comboBoxPizza.getSelectedItem().toString()
-					// ona mi vraca string sa classpath za icon
-					// vraca mi i objekat klase pizza
+					// vraca mi objekat klase pizza
 
-					GUIKontroler.prikaziPizzaGUI();
+					GUIKontroler.prikaziPizzaGUI(pizza);
 				}
 			});
 			btnOdaberiPizzu.setBounds(190, 88, 131, 25);
@@ -185,12 +188,13 @@ public class PicerijaGUI extends JFrame {
 			btnOdaberiPice = new JButton("Odaberi pi\u0107e");
 			btnOdaberiPice.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					Pice pice = null;
 					// pozivam metodu kojoj saljem string
 					// comboBoxPizza.getSelectedItem().toString()
 					// ona mi vraca string sa classpath za icon
 					// vraca mi i objekat klase pice
 
-					GUIKontroler.prikaziPiceGUI();
+					GUIKontroler.prikaziPiceGUI(pice);
 				}
 			});
 			btnOdaberiPice.setBounds(190, 204, 131, 25);
@@ -203,12 +207,13 @@ public class PicerijaGUI extends JFrame {
 			btnOdaberiDesert = new JButton("Odaberi desert");
 			btnOdaberiDesert.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					Desert desert = null;
 					// pozivam metodu kojoj saljem string
 					// comboBoxPizza.getSelectedItem().toString()
 					// ona mi vraca string sa classpath za icon
 					// vraca mi i objekat klase pice
 
-					GUIKontroler.prikaziDesertGUI();
+					GUIKontroler.prikaziDesertGUI(desert);
 				}
 			});
 			btnOdaberiDesert.setBounds(190, 333, 131, 25);

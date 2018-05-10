@@ -10,6 +10,9 @@ import gui.PizzaGUI;
 import main.Picerija;
 import main.interfejs.PicerijaInterfejs;
 import main.porudzbina.StavkaPorudzbine;
+import stavke.Desert;
+import stavke.Pice;
+import stavke.Pizza;
 
 public class GUIKontroler {
 
@@ -46,20 +49,20 @@ public class GUIKontroler {
 		return s;
 	}
 
-	public static void prikaziPizzaGUI() {
-		PizzaGUI prozor = new PizzaGUI();
+	public static void prikaziPizzaGUI(Pizza pizza) {
+		PizzaGUI prozor = new PizzaGUI(pizza);
 		prozor.setLocationRelativeTo(gp);
 		prozor.setVisible(true);
 	}
 
-	public static void prikaziPiceGUI() {
-		PiceGUI prozor = new PiceGUI();
+	public static void prikaziPiceGUI(Pice pice) {
+		PiceGUI prozor = new PiceGUI(pice);
 		prozor.setLocationRelativeTo(gp);
 		prozor.setVisible(true);
 	}
 
-	public static void prikaziDesertGUI() {
-		DesertGUI prozor = new DesertGUI();
+	public static void prikaziDesertGUI(Desert desert) {
+		DesertGUI prozor = new DesertGUI(desert);
 		prozor.setLocationRelativeTo(gp);
 		prozor.setVisible(true);
 	}

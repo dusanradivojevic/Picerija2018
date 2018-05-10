@@ -11,6 +11,7 @@ import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 
 import kontroler.GUIKontroler;
+import stavke.Pice;
 
 import java.awt.Component;
 import javax.swing.JTextField;
@@ -18,23 +19,28 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
+import java.awt.Dimension;
+import javax.swing.ImageIcon;
+import javax.swing.ButtonGroup;
 
 public class PiceGUI extends JFrame {
 	private JPanel contentPane;
 	private JLabel lblSlika;
 	private JLabel lblNaziv;
-	private JTextArea textAreaOpis;
 	private JRadioButton rdbtn05;
 	private JRadioButton rdbtn033;
 	private JLabel lblTotal;
 	private JTextField textFieldTotal;
 	private JButton btnDodajUKorpu;
 	private JLabel lblRsd;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private Pice pice;
 
 	/**
 	 * Create the frame.
 	 */
-	public PiceGUI() {
+	public PiceGUI(Pice pice) {
+		this.pice = pice;
 		setTitle("Pi\u0107e");
 		setResizable(false);
 		setBounds(100, 100, 492, 400);
@@ -42,18 +48,23 @@ public class PiceGUI extends JFrame {
 		getContentPane().setLayout(null);
 		getContentPane().add(getLblSlika());
 		getContentPane().add(getLblNaziv());
-		getContentPane().add(getTextAreaOpis());
 		getContentPane().add(getRdbtn05());
 		getContentPane().add(getRdbtn033());
 		getContentPane().add(getLblTotal());
 		getContentPane().add(getTextFieldTotal());
 		getContentPane().add(getBtnDodajUKorpu());
 		getContentPane().add(getLblRsd());
+
+		// kreiranje prozora u zavisnosti od odabranog pica
+
+		lblNaziv.setText(pice.getNaziv());
+		lblSlika.setIcon(new ImageIcon(PiceGUI.class.getResource(pice.getPutanja())));
 	}
 
 	private JLabel getLblSlika() {
 		if (lblSlika == null) {
 			lblSlika = new JLabel("New label");
+			lblSlika.setPreferredSize(new Dimension(200, 200));
 			lblSlika.setBounds(25, 38, 200, 200);
 		}
 		return lblSlika;
@@ -68,17 +79,15 @@ public class PiceGUI extends JFrame {
 		return lblNaziv;
 	}
 
-	private JTextArea getTextAreaOpis() {
-		if (textAreaOpis == null) {
-			textAreaOpis = new JTextArea();
-			textAreaOpis.setBounds(278, 78, 126, 108);
-		}
-		return textAreaOpis;
-	}
-
 	private JRadioButton getRdbtn05() {
 		if (rdbtn05 == null) {
 			rdbtn05 = new JRadioButton("0,5 l");
+			rdbtn05.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					textFieldTotal.setText(pice.getVelika() + "");
+				}
+			});
+			buttonGroup.add(rdbtn05);
 			rdbtn05.setFont(new Font("Tahoma", Font.PLAIN, 15));
 			rdbtn05.setBounds(289, 243, 127, 25);
 		}
@@ -88,6 +97,12 @@ public class PiceGUI extends JFrame {
 	private JRadioButton getRdbtn033() {
 		if (rdbtn033 == null) {
 			rdbtn033 = new JRadioButton("0,33 l");
+			rdbtn033.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					textFieldTotal.setText(pice.getMala() + "");
+				}
+			});
+			buttonGroup.add(rdbtn033);
 			rdbtn033.setFont(new Font("Tahoma", Font.PLAIN, 15));
 			rdbtn033.setBounds(289, 213, 127, 25);
 		}
@@ -121,9 +136,9 @@ public class PiceGUI extends JFrame {
 				public void actionPerformed(ActionEvent arg0) {
 					String velicina = null;
 					if (rdbtn033.isSelected())
-						velicina = "0,33 l ";
+						velicina = "Mala ";
 					if (rdbtn05.isSelected())
-						velicina = "0,5 l ";
+						velicina = "Velika ";
 
 					try {
 						GUIKontroler.ubaciPorudzbinuUListu(velicina + lblNaziv.getText(),
@@ -135,7 +150,7 @@ public class PiceGUI extends JFrame {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					
+
 					dispose();
 				}
 			});
@@ -143,6 +158,7 @@ public class PiceGUI extends JFrame {
 		}
 		return btnDodajUKorpu;
 	}
+
 	private JLabel getLblRsd() {
 		if (lblRsd == null) {
 			lblRsd = new JLabel("RSD");

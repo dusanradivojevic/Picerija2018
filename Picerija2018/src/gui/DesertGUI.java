@@ -9,11 +9,13 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import kontroler.GUIKontroler;
+import stavke.Desert;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
+import java.awt.Dimension;
 
 public class DesertGUI extends JFrame {
 	private JLabel lblNewSlika;
@@ -27,7 +29,7 @@ public class DesertGUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public DesertGUI() {
+	public DesertGUI(Desert desert) {
 		setTitle("Desert");
 		setResizable(false);
 		setBounds(100, 100, 568, 381);
@@ -45,6 +47,7 @@ public class DesertGUI extends JFrame {
 	private JLabel getLblNewSlika() {
 		if (lblNewSlika == null) {
 			lblNewSlika = new JLabel("New label");
+			lblNewSlika.setPreferredSize(new Dimension(200, 200));
 			lblNewSlika.setBounds(35, 38, 201, 201);
 		}
 		return lblNewSlika;

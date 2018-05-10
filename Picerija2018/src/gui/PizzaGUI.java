@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 
 import kontroler.GUIKontroler;
 import main.porudzbina.StavkaPorudzbine;
+import stavke.Pizza;
 
 import javax.swing.JButton;
 import javax.swing.ButtonGroup;
@@ -37,12 +38,14 @@ public class PizzaGUI extends JFrame {
 	private JLabel lblSrednja;
 	private JLabel lblVelika;
 	private JLabel lblRsd;
-	
+	private Pizza pizza;
 
 	/**
 	 * Create the frame.
 	 */
-	public PizzaGUI() {
+	public PizzaGUI(Pizza pizza) {
+		this.pizza = pizza;
+		
 		setTitle("Pizza");
 		setResizable(false);
 		setBounds(100, 100, 534, 398);
@@ -61,10 +64,17 @@ public class PizzaGUI extends JFrame {
 		getContentPane().add(getLblSrednja());
 		getContentPane().add(getLblVelika());
 		getContentPane().add(getLblRsd());
+		
+		// kreiranje prozora u zavisnosti od odabrane pizze
+		
+		lblNaziv.setText(pizza.getNaziv());
+		lblSlika.setIcon(new ImageIcon(PizzaGUI.class.getResource(pizza.getPutanjaDoSlike())));
+		txtrOpis.setText(pizza.getOpis());
 	}
 	private JLabel getLblSlika() {
 		if (lblSlika == null) {
 			lblSlika = new JLabel("");
+			lblSlika.setIcon(null);
 			lblSlika.setPreferredSize(new Dimension(200, 200));
 			lblSlika.setBounds(22, 39, 200, 200);
 		}
@@ -88,6 +98,11 @@ public class PizzaGUI extends JFrame {
 	private JRadioButton getRdbtnMala() {
 		if (rdbtnMala == null) {
 			rdbtnMala = new JRadioButton("");
+			rdbtnMala.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					lblTotal.setText(pizza.getMala() + "");
+				}
+			});
 			buttonGroup.add(rdbtnMala);
 			rdbtnMala.setBounds(263, 217, 33, 41);
 		}
@@ -96,6 +111,11 @@ public class PizzaGUI extends JFrame {
 	private JRadioButton getRdbtnSrednja() {
 		if (rdbtnSrednja == null) {
 			rdbtnSrednja = new JRadioButton("");
+			rdbtnSrednja.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					lblTotal.setText(pizza.getSrednja() + "");
+				}
+			});
 			buttonGroup.add(rdbtnSrednja);
 			rdbtnSrednja.setBounds(363, 217, 33, 41);
 		}
@@ -104,6 +124,11 @@ public class PizzaGUI extends JFrame {
 	private JRadioButton getRdbtnVelika() {
 		if (rdbtnVelika == null) {
 			rdbtnVelika = new JRadioButton("");
+			rdbtnVelika.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					lblTotal.setText(pizza.getVelika() + "");
+				}
+			});
 			buttonGroup.add(rdbtnVelika);
 			rdbtnVelika.setBounds(453, 217, 33, 41);
 		}

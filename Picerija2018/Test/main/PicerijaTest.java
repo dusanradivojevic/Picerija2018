@@ -18,7 +18,7 @@ import stavke.Pizza;
 public class PicerijaTest {
 	private Picerija p;
 	private LinkedList<StavkaPorudzbine> l;
-	private StavkaPorudzbine s;
+	private StavkaPorudzbine s1;
 	private Pizza pizza;
 	private Pice pice;
 	private Desert desert;
@@ -35,7 +35,7 @@ public class PicerijaTest {
 	public void setUp() throws Exception {
 		p = new Picerija();
 		l=null;
-		s= new StavkaPorudzbine("Sladoled",200);
+		s1= new StavkaPorudzbine("Sladoled",200);
 		pizza = new Pizza("Capricciosa", "/meni/pizze/rsz_capricciosa.jpg", 500, 740, 1090,
 				"- pelat\n- sir\n- praska sunka\n- svez paradajz\n- sampinjoni\n- masline");
 		pice = new Pice("/meni/pice/rsz_coca-cola.jpg", "Coca-cola", 80, 120);
@@ -61,12 +61,6 @@ public class PicerijaTest {
 	public void testDodajPorudzbinuUListuCenaNegativna() {
 		p.dodajPorudzbinuUListu(l, "Sladoled", -200);
 	}
-	
-	/*@Test 
-	public void testDodajPorudzbinuUListu() {
-		
-		assertEquals(s,p.dodajPorudzbinuUListu(l, "Sladoled", 200));
-	}*/
 
 	@Test (expected = java.lang.RuntimeException.class)
 	public void testPretraziPizzeNull() {

@@ -48,6 +48,13 @@ public class StavkaPorudzbine {
 	public double getCena() {
 		return cena;
 	}
+	/**
+	 * Metoda koja vraca naziv stavke porudzbine
+	 * @return naziv Naziv stavke
+	 */
+	public String getNaziv() {
+		return naziv;
+	}
 	
 	/**
 	 * Ispisuje osnovne podatke o stavki formatirane na odgovarajuci nacin.

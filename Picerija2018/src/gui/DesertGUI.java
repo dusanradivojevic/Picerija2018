@@ -11,6 +11,7 @@ import javax.swing.JTextField;
 import kontroler.GUIKontroler;
 import stavke.Desert;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -25,14 +26,16 @@ public class DesertGUI extends JFrame {
 	private JTextField textFieldTotal;
 	private JButton btnDodajUKorpu;
 	private JLabel lblRsd;
+	private Desert desert;
 
 	/**
 	 * Create the frame.
 	 */
 	public DesertGUI(Desert desert) {
+		this.desert = desert;
 		setTitle("Desert");
 		setResizable(false);
-		setBounds(100, 100, 568, 381);
+		setBounds(100, 100, 532, 380);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		getContentPane().setLayout(null);
 		getContentPane().add(getLblNewSlika());
@@ -42,11 +45,19 @@ public class DesertGUI extends JFrame {
 		getContentPane().add(getTextFieldTotal());
 		getContentPane().add(getBtnDodajUKorpu());
 		getContentPane().add(getLblRsd());
+
+		// kreiranje prozora u zavisnosti od odabranog deserta
+
+		lblNaziv.setText(desert.getNaziv());
+		lblNewSlika.setIcon(new ImageIcon(DesertGUI.class.getResource(desert.getPutanjaDoSlike())));
+		textAreaOpis.setText(desert.getOpis());
+		textFieldTotal.setText(desert.getCena() + "");
+
 	}
 
 	private JLabel getLblNewSlika() {
 		if (lblNewSlika == null) {
-			lblNewSlika = new JLabel("New label");
+			lblNewSlika = new JLabel("");
 			lblNewSlika.setPreferredSize(new Dimension(200, 200));
 			lblNewSlika.setBounds(35, 38, 201, 201);
 		}
@@ -56,8 +67,9 @@ public class DesertGUI extends JFrame {
 	private JLabel getLblNaziv() {
 		if (lblNaziv == null) {
 			lblNaziv = new JLabel("Naziv");
+			lblNaziv.setHorizontalAlignment(SwingConstants.CENTER);
 			lblNaziv.setFont(new Font("Tahoma", Font.PLAIN, 20));
-			lblNaziv.setBounds(362, 38, 56, 16);
+			lblNaziv.setBounds(335, 38, 136, 33);
 		}
 		return lblNaziv;
 	}
@@ -65,6 +77,7 @@ public class DesertGUI extends JFrame {
 	private JTextArea getTextAreaOpis() {
 		if (textAreaOpis == null) {
 			textAreaOpis = new JTextArea();
+			textAreaOpis.setEditable(false);
 			textAreaOpis.setBounds(335, 84, 136, 106);
 		}
 		return textAreaOpis;
@@ -105,12 +118,14 @@ public class DesertGUI extends JFrame {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
+					dispose();
 				}
 			});
 			btnDodajUKorpu.setBounds(322, 288, 138, 25);
 		}
 		return btnDodajUKorpu;
 	}
+
 	private JLabel getLblRsd() {
 		if (lblRsd == null) {
 			lblRsd = new JLabel("RSD");

@@ -139,8 +139,7 @@ public class PicerijaGUI extends JFrame {
 	private JComboBox getComboBoxPizza() {
 		if (comboBoxPizza == null) {
 			comboBoxPizza = new JComboBox();
-			comboBoxPizza.setModel(new DefaultComboBoxModel(
-					new String[] { "Margarita", "Vegetariano", "Vesuvio", "Capricciosa", "Serbiana" }));
+			comboBoxPizza.setModel(new DefaultComboBoxModel(new String[] {"Margarita", "Vegetariana", "Vesuvio", "Capricciosa", "Serbiana"}));
 			comboBoxPizza.setBounds(31, 89, 111, 22);
 		}
 		return comboBoxPizza;
@@ -149,7 +148,7 @@ public class PicerijaGUI extends JFrame {
 	private JComboBox getComboBoxPice() {
 		if (comboBoxPice == null) {
 			comboBoxPice = new JComboBox();
-			comboBoxPice.setModel(new DefaultComboBoxModel(new String[] { "\u0160ljiva", "Kru\u0161ka", "Dunja" }));
+			comboBoxPice.setModel(new DefaultComboBoxModel(new String[] {"Coca-cola", "Fanta", "Sprite"}));
 			comboBoxPice.setBounds(31, 205, 111, 22);
 		}
 		return comboBoxPice;
@@ -159,7 +158,7 @@ public class PicerijaGUI extends JFrame {
 		if (comboBoxDesert == null) {
 			comboBoxDesert = new JComboBox();
 			comboBoxDesert
-					.setModel(new DefaultComboBoxModel(new String[] { "\u010Cokoladni mus", "Tiramisu", "Orasnice" }));
+					.setModel(new DefaultComboBoxModel(new String[] {"Cokoladni mus", "Tiramisu", "Orasnice"}));
 			comboBoxDesert.setBounds(31, 334, 111, 22);
 		}
 		return comboBoxDesert;
@@ -170,10 +169,7 @@ public class PicerijaGUI extends JFrame {
 			btnOdaberiPizzu = new JButton("Odaberi pizzu");
 			btnOdaberiPizzu.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					Pizza pizza = null;
-					// pozivam metodu kojoj saljem string
-					// comboBoxPizza.getSelectedItem().toString()
-					// vraca mi objekat klase pizza
+					Pizza pizza = GUIKontroler.nadjiPizzu(comboBoxPizza.getSelectedItem().toString());
 
 					GUIKontroler.prikaziPizzaGUI(pizza);
 				}
@@ -188,11 +184,7 @@ public class PicerijaGUI extends JFrame {
 			btnOdaberiPice = new JButton("Odaberi pi\u0107e");
 			btnOdaberiPice.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Pice pice = null;
-					// pozivam metodu kojoj saljem string
-					// comboBoxPizza.getSelectedItem().toString()
-					// ona mi vraca string sa classpath za icon
-					// vraca mi i objekat klase pice
+					Pice pice = GUIKontroler.nadjiPice(comboBoxPice.getSelectedItem().toString());
 
 					GUIKontroler.prikaziPiceGUI(pice);
 				}
@@ -207,11 +199,7 @@ public class PicerijaGUI extends JFrame {
 			btnOdaberiDesert = new JButton("Odaberi desert");
 			btnOdaberiDesert.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Desert desert = null;
-					// pozivam metodu kojoj saljem string
-					// comboBoxPizza.getSelectedItem().toString()
-					// ona mi vraca string sa classpath za icon
-					// vraca mi i objekat klase pice
+					Desert desert = GUIKontroler.nadjiDesert(comboBoxDesert.getSelectedItem().toString());
 
 					GUIKontroler.prikaziDesertGUI(desert);
 				}
@@ -256,6 +244,7 @@ public class PicerijaGUI extends JFrame {
 	private JTextArea getTextAreaPorudzbina() {
 		if (textAreaPorudzbina == null) {
 			textAreaPorudzbina = new JTextArea();
+			textAreaPorudzbina.setEditable(false);
 		}
 		return textAreaPorudzbina;
 	}
@@ -336,6 +325,7 @@ public class PicerijaGUI extends JFrame {
 		}
 		return mntmAbout;
 	}
+
 	private JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();

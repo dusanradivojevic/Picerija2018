@@ -16,7 +16,7 @@ import stavke.Pizza;
 
 public class GUIKontroler {
 
-	public static LinkedList<StavkaPorudzbine> porudzbina;
+	public static LinkedList<StavkaPorudzbine> porudzbina = new LinkedList<>();
 
 	public static PicerijaInterfejs picerija = new Picerija();
 	public static PicerijaGUI gp;
@@ -68,7 +68,7 @@ public class GUIKontroler {
 	}
 
 	public static void ubaciPorudzbinuUListu(String naziv, double cena) throws Exception {
-		picerija.dodajPorudzbinuUListu(porudzbina, naziv, cena);
+		porudzbina = picerija.dodajPorudzbinuUListu(porudzbina, naziv, cena);
 		gp.ispisiPorudzbinu();
 	}
 
@@ -91,6 +91,39 @@ public class GUIKontroler {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public static Pizza nadjiPizzu(String naziv) {
+
+		Pizza pizza = null;
+		try {
+			pizza = picerija.pretraziPizze(naziv);
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+		}
+
+		return pizza;
+	}
+
+	public static Pice nadjiPice(String naziv) {
+		Pice pice = null;
+		try {
+			pice = picerija.pretraziPica(naziv);
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+		}
+		return pice;
+	}
+
+	public static Desert nadjiDesert(String naziv) {
+		Desert desert = null;
+		try {
+			desert = picerija.pretraziDeserte(naziv);
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+		}
+
+		return desert;
 	}
 
 }

@@ -83,6 +83,7 @@ public class PizzaGUI extends JFrame {
 	private JLabel getLblNaziv() {
 		if (lblNaziv == null) {
 			lblNaziv = new JLabel("naziv");
+			lblNaziv.setHorizontalAlignment(SwingConstants.CENTER);
 			lblNaziv.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			lblNaziv.setBounds(284, 25, 202, 30);
 		}

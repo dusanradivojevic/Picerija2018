@@ -43,7 +43,7 @@ public class PiceGUI extends JFrame {
 		this.pice = pice;
 		setTitle("Pi\u0107e");
 		setResizable(false);
-		setBounds(100, 100, 492, 400);
+		setBounds(100, 100, 443, 400);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		getContentPane().setLayout(null);
 		getContentPane().add(getLblSlika());
@@ -63,7 +63,7 @@ public class PiceGUI extends JFrame {
 
 	private JLabel getLblSlika() {
 		if (lblSlika == null) {
-			lblSlika = new JLabel("New label");
+			lblSlika = new JLabel("");
 			lblSlika.setPreferredSize(new Dimension(200, 200));
 			lblSlika.setBounds(25, 38, 200, 200);
 		}
@@ -73,8 +73,9 @@ public class PiceGUI extends JFrame {
 	private JLabel getLblNaziv() {
 		if (lblNaziv == null) {
 			lblNaziv = new JLabel("Naziv");
-			lblNaziv.setFont(new Font("Tahoma", Font.PLAIN, 17));
-			lblNaziv.setBounds(310, 38, 56, 16);
+			lblNaziv.setHorizontalAlignment(SwingConstants.CENTER);
+			lblNaziv.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			lblNaziv.setBounds(256, 38, 160, 34);
 		}
 		return lblNaziv;
 	}
@@ -89,7 +90,7 @@ public class PiceGUI extends JFrame {
 			});
 			buttonGroup.add(rdbtn05);
 			rdbtn05.setFont(new Font("Tahoma", Font.PLAIN, 15));
-			rdbtn05.setBounds(289, 243, 127, 25);
+			rdbtn05.setBounds(289, 148, 127, 25);
 		}
 		return rdbtn05;
 	}
@@ -104,7 +105,7 @@ public class PiceGUI extends JFrame {
 			});
 			buttonGroup.add(rdbtn033);
 			rdbtn033.setFont(new Font("Tahoma", Font.PLAIN, 15));
-			rdbtn033.setBounds(289, 213, 127, 25);
+			rdbtn033.setBounds(289, 107, 127, 25);
 		}
 		return rdbtn033;
 	}

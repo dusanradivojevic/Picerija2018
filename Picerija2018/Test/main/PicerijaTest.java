@@ -11,6 +11,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import main.porudzbina.StavkaPorudzbine;
+import stavke.Desert;
 import stavke.Pice;
 import stavke.Pizza;
 
@@ -20,7 +21,7 @@ public class PicerijaTest {
 	private StavkaPorudzbine s;
 	private Pizza pizza;
 	private Pice pice;
-	
+	private Desert desert;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -38,6 +39,7 @@ public class PicerijaTest {
 		pizza = new Pizza("Capricciosa", "/meni/pizze/rsz_capricciosa.jpg", 500, 740, 1090,
 				"- pelat\n- sir\n- praska sunka\n- svez paradajz\n- sampinjoni\n- masline");
 		pice = new Pice("/meni/pice/rsz_coca-cola.jpg", "Coca-cola", 80, 120);
+		desert = new Desert("Cokoladni mus", "Porcija od 200g", "/meni/deserti/rsz_cokoladni-mus.jpg", 260);
 	}
 
 	@After
@@ -89,6 +91,11 @@ public class PicerijaTest {
 	@Test (expected = java.lang.RuntimeException.class)
 	public void testPretraziDeserteNull() {
 		p.pretraziDeserte(null);
+	}
+	
+	@Test 
+	public void testPretraziDeserte() {
+		assertEquals(desert.getNaziv(), p.pretraziDeserte("Cokoladni mus").getNaziv());
 	}
 
 }

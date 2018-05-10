@@ -33,15 +33,15 @@ public class Meni {
 	 */
 	public Meni() {
 		Pizza p1 = new Pizza("Capricciosa", "/meni/pizze/rsz_capricciosa.jpg", 500, 740, 1090,
-				"Pelat, sir, praska sunka, svez paradajz, sampinjoni, masline");
+				"Sastav:\n-Pelat, \n-sir, \n-praska sunka, \n-svez paradajz, \n-sampinjoni, \n-masline");
 		Pizza p2 = new Pizza("Margarita", "/meni/pizze/rsz_margarita.jpg", 440, 660, 980,
-				"Pelat, sir, parmezan, svez paradajz, masline");
+				"Sastav:\n-Pelat, \n-sir, \n-parmezan,  \n-svez paradajz,  \n-masline");
 		Pizza p3 = new Pizza("Serbiana", "/meni/pizze/rsz_serbiana.jpg", 570, 820, 1230,
-				"Pelat, sir , panceta, sampinjoni, pavlaka, kulen, ljute papricice");
+				"Sastav:\n-Pelat, \n-sir, \n-panceta, \n-sampinjoni, \n-pavlaka, \n-kulen, \n-ljute papricice");
 		Pizza p4 = new Pizza("Vegetariana", "/meni/pizze/rsz_vegetariano.jpg", 470, 690, 1040,
-				"Sir, sampinjoni, masline, paradajz, rukola, paprika, crveni luk");
+				"Sastav:\n-Sir, \n-sampinjoni, \n-masline, \n-paradajz, \n-rukola, \n-paprika, \n-crveni luk");
 		Pizza p5 = new Pizza("Vesuvio", "/meni/pizze/rsz_vesuvio.jpg", 500, 740, 1090,
-				"Pelat, sir, praska sunka x2, paradajz, masline");
+				"Sastav:\n-Pelat, \n-sir, \n-praska sunka x2, \n-paradajz, \n-masline");
 
 		pizze = new Pizza[5];
 

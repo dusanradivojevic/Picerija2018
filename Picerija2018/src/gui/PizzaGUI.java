@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.Dimension;
 import javax.swing.JTextArea;
@@ -21,6 +22,7 @@ import javax.swing.ButtonGroup;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
+import java.awt.Window.Type;
 
 public class PizzaGUI extends JFrame {
 	private JPanel contentPane;
@@ -39,11 +41,13 @@ public class PizzaGUI extends JFrame {
 	private JLabel lblVelika;
 	private JLabel lblRsd;
 	private Pizza pizza;
+	private JButton btnNewButton;
 
 	/**
 	 * Create the frame.
 	 */
 	public PizzaGUI(Pizza pizza) {
+		setUndecorated(true);
 		this.pizza = pizza;
 
 		setTitle("Pizza");
@@ -70,6 +74,7 @@ public class PizzaGUI extends JFrame {
 		lblNaziv.setText(pizza.getNaziv());
 		lblSlika.setIcon(new ImageIcon(PizzaGUI.class.getResource(pizza.getPutanjaDoSlike())));
 		txtrOpis.setText(pizza.getOpis());
+		getContentPane().add(getBtnNewButton());
 	}
 
 	private JLabel getLblSlika() {
@@ -95,8 +100,9 @@ public class PizzaGUI extends JFrame {
 	private JTextArea getTxtrOpis() {
 		if (txtrOpis == null) {
 			txtrOpis = new JTextArea();
+			txtrOpis.setMaximumSize(new Dimension(4, 22));
 			txtrOpis.setEditable(false);
-			txtrOpis.setBounds(284, 82, 173, 90);
+			txtrOpis.setBounds(284, 66, 173, 129);
 		}
 		return txtrOpis;
 	}
@@ -110,7 +116,7 @@ public class PizzaGUI extends JFrame {
 				}
 			});
 			buttonGroup.add(rdbtnMala);
-			rdbtnMala.setBounds(263, 217, 33, 41);
+			rdbtnMala.setBounds(263, 231, 33, 41);
 		}
 		return rdbtnMala;
 	}
@@ -124,7 +130,7 @@ public class PizzaGUI extends JFrame {
 				}
 			});
 			buttonGroup.add(rdbtnSrednja);
-			rdbtnSrednja.setBounds(363, 217, 33, 41);
+			rdbtnSrednja.setBounds(363, 231, 33, 41);
 		}
 		return rdbtnSrednja;
 	}
@@ -138,7 +144,7 @@ public class PizzaGUI extends JFrame {
 				}
 			});
 			buttonGroup.add(rdbtnVelika);
-			rdbtnVelika.setBounds(453, 217, 33, 41);
+			rdbtnVelika.setBounds(453, 231, 33, 41);
 		}
 		return rdbtnVelika;
 	}
@@ -167,7 +173,8 @@ public class PizzaGUI extends JFrame {
 		if (btnDodajUKorpu == null) {
 			btnDodajUKorpu = new JButton("Dodaj u korpu");
 			btnDodajUKorpu.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent arg0) {
+				public void actionPerformed(ActionEvent arg0) {			
+					
 					String velicina = null;
 					if (rdbtnMala.isSelected())
 						velicina = "Mala ";
@@ -175,8 +182,14 @@ public class PizzaGUI extends JFrame {
 						velicina = "Srednja ";
 					if (rdbtnVelika.isSelected())
 						velicina = "Velika ";
-
+					
 					try {
+						if (velicina == null) {
+							JOptionPane.showMessageDialog(contentPane, "Molim Vas, odaberite velicinu pice!", 
+									null, JOptionPane.WARNING_MESSAGE);
+							
+							return;
+						}
 						GUIKontroler.ubaciPorudzbinuUListu((velicina + lblNaziv.getText()),
 								Double.parseDouble(textFieldTotal.getText()));
 					} catch (NumberFormatException e) {
@@ -186,11 +199,10 @@ public class PizzaGUI extends JFrame {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-
-					dispose();
+				dispose();
 				}
 			});
-			btnDodajUKorpu.setBounds(313, 310, 121, 25);
+			btnDodajUKorpu.setBounds(315, 284, 121, 25);
 		}
 		return btnDodajUKorpu;
 	}
@@ -199,7 +211,7 @@ public class PizzaGUI extends JFrame {
 		if (lblMala == null) {
 			lblMala = new JLabel("Mala");
 			lblMala.setFont(new Font("Tahoma", Font.PLAIN, 15));
-			lblMala.setBounds(263, 194, 56, 22);
+			lblMala.setBounds(263, 208, 56, 22);
 		}
 		return lblMala;
 	}
@@ -208,7 +220,7 @@ public class PizzaGUI extends JFrame {
 		if (lblSrednja == null) {
 			lblSrednja = new JLabel("Srednja");
 			lblSrednja.setFont(new Font("Tahoma", Font.PLAIN, 15));
-			lblSrednja.setBounds(349, 192, 62, 26);
+			lblSrednja.setBounds(349, 206, 62, 26);
 		}
 		return lblSrednja;
 	}
@@ -217,7 +229,7 @@ public class PizzaGUI extends JFrame {
 		if (lblVelika == null) {
 			lblVelika = new JLabel("Velika");
 			lblVelika.setFont(new Font("Tahoma", Font.PLAIN, 15));
-			lblVelika.setBounds(446, 194, 56, 22);
+			lblVelika.setBounds(446, 208, 56, 22);
 		}
 		return lblVelika;
 	}
@@ -229,5 +241,17 @@ public class PizzaGUI extends JFrame {
 			lblRsd.setBounds(166, 314, 56, 16);
 		}
 		return lblRsd;
+	}
+	private JButton getBtnNewButton() {
+		if (btnNewButton == null) {
+			btnNewButton = new JButton("Nazad");
+			btnNewButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					dispose();
+				}
+			});
+			btnNewButton.setBounds(315, 322, 121, 23);
+		}
+		return btnNewButton;
 	}
 }

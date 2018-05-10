@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextArea;
 import javax.swing.JRadioButton;
@@ -22,6 +24,7 @@ import java.awt.Toolkit;
 import java.awt.Dimension;
 import javax.swing.ImageIcon;
 import javax.swing.ButtonGroup;
+import java.awt.Window.Type;
 
 public class PiceGUI extends JFrame {
 	private JPanel contentPane;
@@ -40,6 +43,7 @@ public class PiceGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public PiceGUI(Pice pice) {
+		setUndecorated(true);
 		this.pice = pice;
 		setTitle("Pi\u0107e");
 		setResizable(false);
@@ -59,6 +63,16 @@ public class PiceGUI extends JFrame {
 
 		lblNaziv.setText(pice.getNaziv());
 		lblSlika.setIcon(new ImageIcon(PiceGUI.class.getResource(pice.getPutanja())));
+		
+		JButton btnNewButton = new JButton("Nazad");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+			}
+		});
+		btnNewButton.setActionCommand("");
+		btnNewButton.setBounds(278, 335, 115, 23);
+		getContentPane().add(btnNewButton);
 	}
 
 	private JLabel getLblSlika() {
@@ -142,6 +156,12 @@ public class PiceGUI extends JFrame {
 						velicina = "Velika ";
 
 					try {
+						if (velicina == null) {
+							JOptionPane.showMessageDialog(contentPane, "Molim Vas, odaberite velicinu pica!", 
+									null, JOptionPane.WARNING_MESSAGE);
+							
+							return;
+						}
 						GUIKontroler.ubaciPorudzbinuUListu(velicina + lblNaziv.getText(),
 								Double.parseDouble(textFieldTotal.getText()));
 					} catch (NumberFormatException e) {
@@ -155,7 +175,7 @@ public class PiceGUI extends JFrame {
 					dispose();
 				}
 			});
-			btnDodajUKorpu.setBounds(278, 316, 115, 25);
+			btnDodajUKorpu.setBounds(278, 290, 115, 25);
 		}
 		return btnDodajUKorpu;
 	}

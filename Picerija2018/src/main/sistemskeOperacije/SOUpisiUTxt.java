@@ -22,12 +22,12 @@ public class SOUpisiUTxt {
 					+ "\n\n");
 
 			for (int i = 0; i < porudzbina.size(); i++) {
-				out.print(porudzbina.get(i).toString());
+				out.print(porudzbina.get(i).toString2());
 			}
 
 			out.print("\n");
 
-			for (int i = 0; i < 15; i++) {
+			for (int i = 0; i < 50; i++) {
 				out.print("=");
 			}
 

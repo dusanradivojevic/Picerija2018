@@ -56,7 +56,10 @@ public class StavkaPorudzbine {
 	 */
 	@Override
 	public String toString() {
-		return naziv + "\t\t" + cena + " RSD \n";
+		return String.format("%50s", naziv + "\t" + cena + " RSD \n");
 	}
 	
+	public String toString2() {
+		return naziv + "\t" + cena + " RSD \n";
+	}
 }

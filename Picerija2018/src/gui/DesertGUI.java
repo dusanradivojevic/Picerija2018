@@ -17,6 +17,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import java.awt.Dimension;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
+import java.awt.Window.Type;
 
 public class DesertGUI extends JFrame {
 	private JLabel lblNewSlika;
@@ -27,11 +30,13 @@ public class DesertGUI extends JFrame {
 	private JButton btnDodajUKorpu;
 	private JLabel lblRsd;
 	private Desert desert;
+	private JButton btnNewButton;
 
 	/**
 	 * Create the frame.
 	 */
 	public DesertGUI(Desert desert) {
+		setUndecorated(true);
 		this.desert = desert;
 		setTitle("Desert");
 		setResizable(false);
@@ -52,6 +57,7 @@ public class DesertGUI extends JFrame {
 		lblNewSlika.setIcon(new ImageIcon(DesertGUI.class.getResource(desert.getPutanjaDoSlike())));
 		textAreaOpis.setText(desert.getOpis());
 		textFieldTotal.setText(desert.getCena() + "");
+		getContentPane().add(getBtnNewButton());
 
 	}
 
@@ -77,6 +83,8 @@ public class DesertGUI extends JFrame {
 	private JTextArea getTextAreaOpis() {
 		if (textAreaOpis == null) {
 			textAreaOpis = new JTextArea();
+			textAreaOpis.setMaximumSize(new Dimension(4, 22));
+			textAreaOpis.setBorder(null);
 			textAreaOpis.setEditable(false);
 			textAreaOpis.setBounds(335, 84, 136, 106);
 		}
@@ -121,7 +129,7 @@ public class DesertGUI extends JFrame {
 					dispose();
 				}
 			});
-			btnDodajUKorpu.setBounds(322, 288, 138, 25);
+			btnDodajUKorpu.setBounds(322, 260, 138, 25);
 		}
 		return btnDodajUKorpu;
 	}
@@ -133,5 +141,17 @@ public class DesertGUI extends JFrame {
 			lblRsd.setBounds(200, 292, 56, 16);
 		}
 		return lblRsd;
+	}
+	private JButton getBtnNewButton() {
+		if (btnNewButton == null) {
+			btnNewButton = new JButton("Nazad");
+			btnNewButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					dispose();
+				}
+			});
+			btnNewButton.setBounds(322, 296, 138, 23);
+		}
+		return btnNewButton;
 	}
 }

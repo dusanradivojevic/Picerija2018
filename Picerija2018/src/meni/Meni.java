@@ -23,7 +23,9 @@ public class Meni {
 	 * Niz vrsta pica u ponudi
 	 */
 	Pice[] pica = null;
-
+	/**
+	 * Konstruktor koji definise sve stavke menija i postavlja ih u odgovarajuce nizove
+	 */
 	public Meni() {
 		Pizza p1 = new Pizza("Capricciosa", "/meni/pizze/rsz_capricciosa.jpg", 500, 740, 1090,
 				"Pelat, sir, praska sunka, svez paradajz, sampinjoni, masline");
@@ -57,6 +59,51 @@ public class Meni {
 		pica[0] = s1;
 		pica[1] = s2;
 		pica[2] = s3;
+	}
+	/**
+	 * Metoda koja pretrazuje niz pizza po nazivu jela
+	 * @param p-naziv vrste pizze
+	 * @return Objekat tipa Pizza 
+	 * @throws Exception u slucaju da je naziv jela null
+	 */
+	public Pizza pretraziPizze(String p) throws Exception{
+		if(p == null) 
+			throw new Exception("Naziv jela ne sme biti null");
+		for(int i = 0;i<pizze.length;i++) {
+			if(pizze[i].getNaziv().contains(p))
+				return pizze[i];
+		}
+		return null;
+	}
+	/**
+	 * Metoda koja pretrazuje niz pica po nazivu
+	 * @param p-naziv pica
+	 * @return Objekat tipa Pice
+	 * @throws Exception u slucaju da je naziv null
+	 */
+	public Pice pretraziPica(String p) throws Exception {
+		if(p==null)
+			throw new Exception("Naziv pica ne sme biti null");
+		for(int i=0;i<pica.length;i++) {
+			if(pica[i].getNaziv().contains(p))
+				return pica[i];
+		}
+		return null;
+	}
+	/**
+	 * Metoda koja pretrazuje niz deserta po nazivu
+	 * @param d-naziv deserta
+	 * @return Objekat tipa Desert
+	 * @throws Exception u slucaju da je naziv null
+	 */
+	public Desert pretraziDeserte(String d) throws Exception {
+		if(d==null)
+			throw new Exception("Naziv deserta ne sme biti null");
+		for(int i=0;i<deserti.length;i++) {
+			if(deserti[i].getNaziv().contains(d))
+				return deserti[i];
+		}
+		return null;
 	}
 
 }

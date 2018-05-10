@@ -11,10 +11,15 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import main.porudzbina.StavkaPorudzbine;
+import stavke.Pice;
+import stavke.Pizza;
 
 public class PicerijaTest {
 	private Picerija p;
 	private LinkedList<StavkaPorudzbine> l;
+	private StavkaPorudzbine s;
+	private Pizza pizza;
+	
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -28,21 +33,15 @@ public class PicerijaTest {
 	public void setUp() throws Exception {
 		p = new Picerija();
 		l=null;
+		s= new StavkaPorudzbine("Sladoled",200);
+		pizza = new Pizza("Capricciosa", "/meni/pizze/rsz_capricciosa.jpg", 500, 740, 1090,
+				"- pelat\n- sir\n- praska sunka\n- svez paradajz\n- sampinjoni\n- masline");
+		
 	}
 
 	@After
 	public void tearDown() throws Exception {
 		p = null;
-	}
-
-	@Test
-	public void testSerijalizujUBin() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSerijalizujUTxt() {
-		fail("Not yet implemented");
 	}
 
 	@Test (expected = java.lang.RuntimeException.class)
@@ -59,19 +58,32 @@ public class PicerijaTest {
 	public void testDodajPorudzbinuUListuCenaNegativna() {
 		p.dodajPorudzbinuUListu(l, "Sladoled", -200);
 	}
+	
+	/*@Test 
+	public void testDodajPorudzbinuUListu() {
+		
+		assertEquals(s,p.dodajPorudzbinuUListu(l, "Sladoled", 200));
+	}*/
 
 	@Test (expected = java.lang.RuntimeException.class)
-	public void testPretraziPizze() {
+	public void testPretraziPizzeNull() {
 		p.pretraziPizze(null);
 	}
-
-	@Test (expected = java.lang.RuntimeException.class)
-	public void testPretraziPica() {
-		p.pretraziPica(null);
+	
+	@Test 
+	public void testPretraziPizze() {
+		assertEquals(pizza.getNaziv(), p.pretraziPizze("Capricciosa").getNaziv());
 	}
 
 	@Test (expected = java.lang.RuntimeException.class)
-	public void testPretraziDeserte() {
+	public void testPretraziPicaNull() {
+		p.pretraziPica(null);
+	}
+	
+	
+
+	@Test (expected = java.lang.RuntimeException.class)
+	public void testPretraziDeserteNull() {
 		p.pretraziDeserte(null);
 	}
 

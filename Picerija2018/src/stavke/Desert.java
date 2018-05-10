@@ -29,7 +29,7 @@ public class Desert {
 	 * @param cena
 	 */
 	public Desert(String naziv, String opis, String putanjaDoSlike, double cena) {
-		super();
+//		super();
 		this.naziv = naziv;
 		this.opis = opis;
 		this.putanjaDoSlike = putanjaDoSlike;

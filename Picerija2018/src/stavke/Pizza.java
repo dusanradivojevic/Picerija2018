@@ -33,7 +33,7 @@ public class Pizza {
 	 * @param opis
 	 */
 	public Pizza(String naziv, String putanjaDoSlike, double mala, double srednja, double velika, String opis) {
-		super();
+//		super();
 		this.naziv = naziv;
 		this.putanjaDoSlike = putanjaDoSlike;
 		this.mala = mala;

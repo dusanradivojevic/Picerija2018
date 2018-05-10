@@ -26,7 +26,7 @@ public class Pice {
 	 * @param velika
 	 */
 	public Pice(String putanja, String naziv, double mala, double velika) {
-		super();
+//		super();
 		this.putanja = putanja;
 		this.naziv = naziv;
 		this.mala = mala;

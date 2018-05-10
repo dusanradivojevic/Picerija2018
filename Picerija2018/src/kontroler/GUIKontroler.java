@@ -93,4 +93,22 @@ public class GUIKontroler {
 		}
 	}
 
+	public static Pizza nadjiPizzu(String naziv) {
+		Pizza pizza = null;
+
+		return pizza;
+	}
+
+	public static Pice nadjiPice(String naziv) {
+		Pice pice = null;
+
+		return pice;
+	}
+
+	public static Desert nadjiDesert(String naziv) {
+		Desert desert = null;
+
+		return desert;
+	}
+
 }

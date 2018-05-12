@@ -7,6 +7,7 @@ import gui.DesertGUI;
 import gui.PiceGUI;
 import gui.PicerijaGUI;
 import gui.PizzaGUI;
+import junit.framework.Test;
 import main.Picerija;
 import main.interfejs.PicerijaInterfejs;
 import main.porudzbina.StavkaPorudzbine;
@@ -84,8 +85,7 @@ public class GUIKontroler {
 	public static void zavrsiPorudzbinu() {
 
 		try {
-			picerija.serijalizujUBin(porudzbina);
-			picerija.serijalizujUTxt(porudzbina);
+			picerija.upisiUTxt(porudzbina);
 
 			porudzbina = null;
 		} catch (Exception e) {

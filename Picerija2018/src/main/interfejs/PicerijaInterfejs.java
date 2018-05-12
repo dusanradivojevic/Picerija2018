@@ -8,9 +8,7 @@ import stavke.Pizza;
 
 public interface PicerijaInterfejs {
 
-	public void serijalizujUBin(LinkedList<StavkaPorudzbine> porudzbina) throws Exception;
-
-	public void serijalizujUTxt(LinkedList<StavkaPorudzbine> porudzbina) throws Exception;
+	public void upisiUTxt(LinkedList<StavkaPorudzbine> porudzbina) throws Exception;
 
 	public LinkedList<StavkaPorudzbine> dodajPorudzbinuUListu(LinkedList<StavkaPorudzbine> porudzbina, String naziv,
 			double cena) throws RuntimeException;

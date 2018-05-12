@@ -1,6 +1,7 @@
 package main.sistemskeOperacije;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
@@ -15,7 +16,10 @@ public class SOUpisiUTxt {
 
 		if (porudzbina == null || porudzbina.size() == 0)
 			return;
-
+		
+		File f = new File("porudzbine");
+		f.mkdir();
+		
 		try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("porudzbine/racun.txt", true)))) {
 
 			out.print("DATUM: " + new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(Calendar.getInstance().getTime())

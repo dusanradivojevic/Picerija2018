@@ -8,7 +8,6 @@ import main.sistemskeOperacije.SODodajPorudzbinuUListu;
 import main.sistemskeOperacije.SOPretraziDeserte;
 import main.sistemskeOperacije.SOPretraziPica;
 import main.sistemskeOperacije.SOPretraziPizze;
-import main.sistemskeOperacije.SOUpisiUBin;
 import main.sistemskeOperacije.SOUpisiUTxt;
 import stavke.Desert;
 import stavke.Pice;
@@ -25,22 +24,6 @@ import stavke.Pizza;
 public class Picerija implements PicerijaInterfejs {
 
 	/**
-	 * Metoda koja podatke o porudzbini upisuje u data fajl.
-	 * 
-	 * @param porudzbina
-	 *            Lista stavki iz porudzbine.
-	 * 
-	 * @throws java.lang.Exception
-	 *             U slucaju greske prilikom upisivanja u data fajl.
-	 */
-
-	@Override
-	public void serijalizujUBin(LinkedList<StavkaPorudzbine> porudzbina) throws Exception {
-
-		SOUpisiUBin.izvrsi(porudzbina);
-	}
-
-	/**
 	 * Metoda koja podatke o porudzbini upisuje u tekstualni fajl.
 	 * 
 	 * @param porudzbina
@@ -50,9 +33,9 @@ public class Picerija implements PicerijaInterfejs {
 	 *             U slucaju greske prilikom upisivanja u tekstualni fajl.
 	 */
 	@Override
-	public void serijalizujUTxt(LinkedList<StavkaPorudzbine> porudzbina) throws Exception {
+	public void upisiUTxt(LinkedList<StavkaPorudzbine> porudzbina) throws Exception {
+		
 		SOUpisiUTxt.izvrsi(porudzbina);
-
 	}
 
 	/**
